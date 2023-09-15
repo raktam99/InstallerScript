@@ -1,14 +1,12 @@
 import os
 import tkinter as tk
-from tkinter import Checkbutton, IntVar, Listbox
+from tkinter import Checkbutton, IntVar
 from PIL import Image
 from PIL import ImageTk
 import requests
 import subprocess
 import programs
 import time
-import atexit
-import signal
 
 
 # Downloader function
@@ -63,7 +61,7 @@ def bttn_click():
     if daemon_invar.get() == 1:
         programs_to_install.append(programs.daemon_tools)
 
-    if(qbit_invar.get() == 1):
+    if qbit_invar.get() == 1:
         programs_to_install.append(programs.qbittorrent)
 
     os.mkdir(programs.installer_path)
@@ -92,7 +90,7 @@ programs_to_install = []
 # Main app window
 root = tk.Tk()
 root.title("Installer")
-root.resizable(False,False)
+root.resizable(False, False)
 
 # Text
 choose_label = tk.Label(root, text="Please choose")
