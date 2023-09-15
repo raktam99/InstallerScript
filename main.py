@@ -18,7 +18,7 @@ def download_app(application):
         response = requests.get(application.url)
         response.raise_for_status()  # Check for HTTP errors
 
-        with open(application.path, 'wb') as f:
+        with open(f"{programs.installer_path}\\{application.name}Setup.exe", 'wb') as f:
             f.write(response.content)
 
         print(f"Downloaded {application.name} successfully!")

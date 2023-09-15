@@ -7,7 +7,6 @@ class App:
         self.name = name
         self.url = url
         self.flags = flags
-        self.path = f"{installer_path}\\{name}Setup.exe"
 
 
 chrome = App("Chrome",
