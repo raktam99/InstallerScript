@@ -12,11 +12,12 @@ import time
 # Downloader function
 def download_app(application):
     print(f"{application.name}...")
+    path = f"{programs.installer_path}\\{application.name}Setup.exe"
     try:
         response = requests.get(application.url)
         response.raise_for_status()  # Check for HTTP errors
 
-        with open(f"{programs.installer_path}\\{application.name}Setup.exe", 'wb') as f:
+        with open(path, 'wb') as f:
             f.write(response.content)
 
         print(f"Downloaded {application.name} successfully!")
@@ -27,15 +28,16 @@ def download_app(application):
 # Installer function
 def install_app(application):
     try:
-        cmd = [application.path] + application.flags
         print(f"{application.name}...")
+        path = f"{programs.installer_path}\\{application.name}Setup.exe"
+        cmd = [path] + application.flags
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         p.wait()
         print(f"Installed {application.name} successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error installing {application.name}: {e}")
     except FileNotFoundError:
-        print(f"Installer not found at path: {application.path}")
+        print(f"Installer not found at path: {path}")
 
 
 # Click handler function
