@@ -64,6 +64,18 @@ def bttn_click():
     if qbit_invar.get() == 1:
         programs_to_install.append(programs.qbittorrent)
 
+    if java_invar.get() == 1:
+        programs_to_install.append(programs.java)
+
+    if teams_invar.get() == 1:
+        programs_to_install.append(programs.teams)
+
+    if dc_invar.get() == 1:
+        programs_to_install.append(programs.discord)
+
+    if steam_invar.get() == 1:
+        programs_to_install.append(programs.steam)
+
     os.mkdir(programs.installer_path)
     print("Created directory where installers will be stored!")
 
@@ -221,9 +233,69 @@ qbit_checkbox = Checkbutton(root, text="qBittorrtent", variable=qbit_invar)
 qbit_checkbox.grid(row=8, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
+# region Java
+java_image = Image.open(".\\Resources\\java.png")
+java_image = java_image.resize((20, 20))
+java_photo = ImageTk.PhotoImage(java_image)
+
+# Display image
+java_image_label = tk.Label(root, image=java_photo)
+java_image_label.grid(row=9, column=0, padx=2, pady=2)
+
+# Checkbox
+java_invar = IntVar()
+java_checkbox = Checkbutton(root, text="Java", variable=java_invar)
+java_checkbox.grid(row=9, column=1, padx=2, pady=2, sticky="w")
+# endregion
+
+# region Teams
+teams_image = Image.open(".\\Resources\\teams.png")
+teams_image = teams_image.resize((20, 20))
+teams_photo = ImageTk.PhotoImage(teams_image)
+
+# Display image
+teams_image_label = tk.Label(root, image=teams_photo)
+teams_image_label.grid(row=10, column=0, padx=2, pady=2)
+
+# Checkbox
+teams_invar = IntVar()
+teams_checkbox = Checkbutton(root, text="Teams", variable=teams_invar)
+teams_checkbox.grid(row=10, column=1, padx=2, pady=2, sticky="w")
+# endregion
+
+# region Discord
+dc_image = Image.open(".\\Resources\\discord.png")
+dc_image = dc_image.resize((20, 20))
+dc_photo = ImageTk.PhotoImage(dc_image)
+
+# Display image
+dc_image_label = tk.Label(root, image=dc_photo)
+dc_image_label.grid(row=11, column=0, padx=2, pady=2)
+
+# Checkbox
+dc_invar = IntVar()
+dc_checkbox = Checkbutton(root, text="Discord", variable=dc_invar)
+dc_checkbox.grid(row=11, column=1, padx=2, pady=2, sticky="w")
+# endregion
+
+# region Steam
+steam_image = Image.open(".\\Resources\\steam.png")
+steam_image = steam_image.resize((20, 20))
+steam_photo = ImageTk.PhotoImage(steam_image)
+
+# Display image
+steam_image_label = tk.Label(root, image=steam_photo)
+steam_image_label.grid(row=12, column=0, padx=2, pady=2)
+
+# Checkbox
+steam_invar = IntVar()
+steam_checkbox = Checkbutton(root, text="Steam", variable=steam_invar)
+steam_checkbox.grid(row=12, column=1, padx=2, pady=2, sticky="w")
+# endregion
+
 # Button
 button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=9, column=0, padx=2, pady=2, columnspan=3)
+button.grid(row=13, column=0, padx=2, pady=2, columnspan=3)
 
 # Main
 if __name__ == '__main__':

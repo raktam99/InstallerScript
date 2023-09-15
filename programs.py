@@ -42,3 +42,19 @@ daemon_tools = App("Daemon_Tools",
 qbittorrent = App("qBittorrent",
                   "https://download.fosshub.com/Protected/expiretime=1694821705;badurl=aHR0cHM6Ly93d3cuZm9zc2h1Yi5jb20vcUJpdHRvcnJlbnQuaHRtbA==/5112b8d37ed0e9e2068afa2ac242901e18f229b6162764f1b9f16ea05519bd8b/5b8793a7f9ee5a5c3e97a3b2/64ee7adf2be6f897089e8299/qbittorrent_4.5.5_x64_setup.exe",
                   ["/S"])
+
+java = App("Java",
+           "https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe&BHost=javadl.sun.com&File=jre-8u381-windows-i586.exe&AuthParam=1694808733_6efac947c6f0b1a5bcd0925cae1620f7&ext=.exe",
+           ["/s"])
+
+teams = App("Teams",
+            "https://statics.teams.cdn.office.net/production-windows/1.6.00.24078/TeamsSetup.exe?sv=2019-07-07&sr=b&sig=epTp9LL9jmIwrX6YwTigE%2FYFkjzQeSyagrxbInZEzc0%3D&se=2023-09-15T20%3A57%3A21Z&sp=r&rscd=attachment%3B%20filename%3D%22TeamsSetup_c_w_.exe%22",
+            ["-s"])
+
+discord = App("Discord",
+              "https://dl.discordapp.net/distro/app/stable/win/x86/1.0.9017/DiscordSetup.exe",
+              ["-s"])
+
+steam = App("Steam",
+            "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe",
+            ["/S"])
