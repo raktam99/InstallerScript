@@ -12,7 +12,7 @@ import signal
 
 # Downloader function
 def download_app(application):
-    print(f"Downloading {application.name}...")
+    print(f"{application.name}...")
     try:
         response = requests.get(application.url)
         response.raise_for_status()  # Check for HTTP errors
@@ -29,9 +29,11 @@ def download_app(application):
 def install_app(application):
     try:
         cmd = [application.path] + application.flags
-        print(f"Installing {application.name}...")
+        print(f"{application.name}...")
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         p.wait()
+        # os.kill(p.pid, signal.SIGTERM)
+        print(f"Installed {application.name} successfully!")
 
     except subprocess.CalledProcessError as e:
         print(f"Error installing {application.name}: {e}")
@@ -50,16 +52,26 @@ def bttn_click():
     if iobitu_invar.get() == 1:
         programs_to_install.append(programs.iobit_uninstaller)
 
+    if asystemcare_invar.get() == 1:
+        programs_to_install.append(programs.advanced_systemcare)
+
+    if avast_invar.get() == 1:
+        programs_to_install.append(programs.avast)
+
+    print("Downloading Programs...")
     for program in programs_to_install:
         download_app(program)
+
+    print("Installing programs...")
+    for program in programs_to_install:
         install_app(program)
 
     print("Everything is installed!")
     time.sleep(2)
     print("Removing installers...")
 
-    #for program in programs_to_install:
-        #os.remove(program.path)
+    # for program in programs_to_install:
+        # os.remove(program.path)
 
     print("Done!")
 
@@ -129,9 +141,43 @@ iobitu_invar = IntVar()
 iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller", variable=iobitu_invar)
 iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2)
 
+# Advanced Systemcare
+
+
+# Load image
+asystemcare_image = Image.open(".\\Resources\\advenced-systemcare.png")  # Replace "example.png" with your image file path
+asystemcare_image = asystemcare_image.resize((20, 20))  # Resize the image to your desired dimensions
+asystemcare_photo = ImageTk.PhotoImage(asystemcare_image)
+
+# Display image
+asystemcare_image_label = tk.Label(root, image=asystemcare_photo)
+asystemcare_image_label.grid(row=4, column=0, padx=2, pady=2)
+
+# Checkbox
+asystemcare_invar = IntVar()
+asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare", variable=asystemcare_invar)
+asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2)
+
+# Avast
+
+
+# Load image
+avast_image = Image.open(".\\Resources\\avast.png")  # Replace "example.png" with your image file path
+avast_image = avast_image.resize((20, 20))  # Resize the image to your desired dimensions
+avast_photo = ImageTk.PhotoImage(avast_image)
+
+# Display image
+avast_image_label = tk.Label(root, image=avast_photo)
+avast_image_label.grid(row=5, column=0, padx=2, pady=2)
+
+# Checkbox
+avast_invar = IntVar()
+avast_checkbox = Checkbutton(root, text="Avast", variable=avast_invar)
+avast_checkbox.grid(row=5, column=1, padx=2, pady=2)
+
 # Button
 button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=4, column=0, padx=2, pady=2, columnspan=3)
+button.grid(row=6, column=0, padx=2, pady=2, columnspan=3)
 
 # Main
 if __name__ == '__main__':

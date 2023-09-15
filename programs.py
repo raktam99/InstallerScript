@@ -16,8 +16,16 @@ chrome = App("Chrome",
 
 opera = App("Opera",
             "https://net.geo.opera.com/opera_gx/stable/windows?utm_source=google&utm_medium=ose&utm_campaign=%28none%29&http_referrer=https%3A%2F%2Fwww.google.com%2F&utm_site=opera_com&utm_lastpage=opera.com%2F&dl_token=58304643",
-            ["/silent", "/allusers=1", "/setdefaultbrowser=0", "/pintotaskbar=0", "/launchbrowser=1"])
+            ["/silent", "/allusers=1", "/setdefaultbrowser=0", "/pintotaskbar=0", "/launchbrowser=0"])
 
 iobit_uninstaller = App("Iobit_Uninstaller",
                         "https://cdn.iobit.com/dl/iobituninstaller.exe",
                         ["/VERYSILENT", "/NORESTART", "/Install"])
+
+advanced_systemcare = App("Advanced_Systemcare",
+                          "https://cdn.iobit.com/dl/advanced-systemcare-setup.exe",
+                          ["/VERYSILENT", "/NORESTART"])
+
+avast = App("Avast",
+            "https://bits.avcdn.net/productfamily_ANTIVIRUS/insttype_FREE/platform_WIN/installertype_ONLINE/build_RELEASE/cookie_mmm_ava_012_999_a7i_m",
+            ["/silent"])
