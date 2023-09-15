@@ -35,7 +35,7 @@ winrar = App("WinRar",
              ["/S"])
 
 daemon_tools = App("Daemon_Tools",
-                   "https://file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com/40f7fe6349416c00d871ad7a543ae0bf784c5ed8/DTLite1120-2105.exe?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Z42SJEYMLCPREOBRVPTN%2F20230915%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20230915T095215Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=95f20b5b6cc5b7de9d32259536f8365da7fd875faa15761094fac98e14f3bf91",
+                   "https://file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com/40f7fe6349416c00d871ad7a543ae0bf784c5ed8/DTLite1120-2105.exe?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Z42SJEYMLCPREOBRVPTN%2F20230915%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20230915T153032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=67a4350688f51b72f3f36090ed4d5eded1de067f9591509c7230f52eb446cf91",
                    ["/S"])
 
 qbittorrent = App("qBittorrent",

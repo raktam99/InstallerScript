@@ -1,6 +1,6 @@
 import os
 import tkinter as tk
-from tkinter import Checkbutton, IntVar
+from tkinter import Checkbutton, IntVar, Listbox
 from PIL import Image
 from PIL import ImageTk
 import requests
@@ -34,7 +34,6 @@ def install_app(application):
         p.wait()
         # os.kill(p.pid, signal.SIGTERM)
         print(f"Installed {application.name} successfully!")
-
     except subprocess.CalledProcessError as e:
         print(f"Error installing {application.name}: {e}")
     except FileNotFoundError:
@@ -90,13 +89,13 @@ def bttn_click():
 # List for programs that will be installed
 programs_to_install = []
 
-
 # Main app window
 root = tk.Tk()
 root.title("Installer")
+root.resizable(False,False)
 
 # Text
-choose_label = tk.Label(root, text="Please choose!")
+choose_label = tk.Label(root, text="Please choose")
 choose_label.grid(row=0, column=0, padx=2, pady=2, columnspan=2)
 
 # region Chrome
@@ -112,7 +111,7 @@ chrome_image_label.grid(row=1, column=0, padx=2, pady=2)
 # Checkbox
 chrome_invar = IntVar()
 chrome_checkbox = Checkbutton(root, text="Google Chrome", variable=chrome_invar)
-chrome_checkbox.grid(row=1, column=1, padx=2, pady=2)
+chrome_checkbox.grid(row=1, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region Opera
@@ -128,7 +127,7 @@ opera_image_label.grid(row=2, column=0, padx=2, pady=2)
 # Checkbox
 opera_invar = IntVar()
 opera_checkbox = Checkbutton(root, text="Opera", variable=opera_invar)
-opera_checkbox.grid(row=2, column=1, padx=2, pady=2)
+opera_checkbox.grid(row=2, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region Iobit Uninstaller
@@ -144,7 +143,7 @@ iobitu_image_label.grid(row=3, column=0, padx=2, pady=2)
 # Checkbox
 iobitu_invar = IntVar()
 iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller", variable=iobitu_invar)
-iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2)
+iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region Advanced Systemcare
@@ -160,7 +159,7 @@ asystemcare_image_label.grid(row=4, column=0, padx=2, pady=2)
 # Checkbox
 asystemcare_invar = IntVar()
 asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare", variable=asystemcare_invar)
-asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2)
+asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region Avast
@@ -176,7 +175,7 @@ avast_image_label.grid(row=5, column=0, padx=2, pady=2)
 # Checkbox
 avast_invar = IntVar()
 avast_checkbox = Checkbutton(root, text="Avast", variable=avast_invar)
-avast_checkbox.grid(row=5, column=1, padx=2, pady=2)
+avast_checkbox.grid(row=5, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region WinRar
@@ -191,7 +190,7 @@ winrar_image_label.grid(row=6, column=0, padx=2, pady=2)
 # Checkbox
 winrar_invar = IntVar()
 winrar_checkbox = Checkbutton(root, text="WinRar", variable=winrar_invar)
-winrar_checkbox.grid(row=6, column=1, padx=2, pady=2)
+winrar_checkbox.grid(row=6, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region Daemon Tools
@@ -206,7 +205,7 @@ daemon_image_label.grid(row=7, column=0, padx=2, pady=2)
 # Checkbox
 daemon_invar = IntVar()
 daemon_checkbox = Checkbutton(root, text="Daemon Tools", variable=daemon_invar)
-daemon_checkbox.grid(row=7, column=1, padx=2, pady=2)
+daemon_checkbox.grid(row=7, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # region qBittorent
@@ -221,7 +220,7 @@ qbit_image_label.grid(row=8, column=0, padx=2, pady=2)
 # Checkbox
 qbit_invar = IntVar()
 qbit_checkbox = Checkbutton(root, text="qBittorrtent", variable=qbit_invar)
-qbit_checkbox.grid(row=8, column=1, padx=2, pady=2)
+qbit_checkbox.grid(row=8, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
 # Button
