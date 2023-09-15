@@ -29,3 +29,15 @@ advanced_systemcare = App("Advanced_Systemcare",
 avast = App("Avast",
             "https://bits.avcdn.net/productfamily_ANTIVIRUS/insttype_FREE/platform_WIN/installertype_ONLINE/build_RELEASE/cookie_mmm_ava_012_999_a7i_m",
             ["/silent"])
+
+winrar = App("WinRar",
+             "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe",
+             ["/S"])
+
+daemon_tools = App("Daemon_Tools",
+                   "https://file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com/40f7fe6349416c00d871ad7a543ae0bf784c5ed8/DTLite1120-2105.exe?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Z42SJEYMLCPREOBRVPTN%2F20230915%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20230915T095215Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=95f20b5b6cc5b7de9d32259536f8365da7fd875faa15761094fac98e14f3bf91",
+                   ["/S"])
+
+qbittorrent = App("qBittorrent",
+                  "https://download.fosshub.com/Protected/expiretime=1694821705;badurl=aHR0cHM6Ly93d3cuZm9zc2h1Yi5jb20vcUJpdHRvcnJlbnQuaHRtbA==/5112b8d37ed0e9e2068afa2ac242901e18f229b6162764f1b9f16ea05519bd8b/5b8793a7f9ee5a5c3e97a3b2/64ee7adf2be6f897089e8299/qbittorrent_4.5.5_x64_setup.exe",
+                  ["/S"])

@@ -58,6 +58,15 @@ def bttn_click():
     if avast_invar.get() == 1:
         programs_to_install.append(programs.avast)
 
+    if winrar_invar.get() == 1:
+        programs_to_install.append(programs.winrar)
+
+    if daemon_invar.get() == 1:
+        programs_to_install.append(programs.daemon_tools)
+
+    if(qbit_invar.get() == 1):
+        programs_to_install.append(programs.qbittorrent)
+
     print("Downloading Programs...")
     for program in programs_to_install:
         download_app(program)
@@ -90,12 +99,10 @@ root.title("Installer")
 choose_label = tk.Label(root, text="Please choose!")
 choose_label.grid(row=0, column=0, padx=2, pady=2, columnspan=2)
 
-# Chrome
-
-
+# region Chrome
 # Load image
-chrome_image = Image.open(".\\Resources\\chrome.png")  # Replace "example.png" with your image file path
-chrome_image = chrome_image.resize((20, 20))  # Resize the image to your desired dimensions
+chrome_image = Image.open(".\\Resources\\chrome.png")
+chrome_image = chrome_image.resize((20, 20))
 chrome_photo = ImageTk.PhotoImage(chrome_image)
 
 # Display image
@@ -106,13 +113,12 @@ chrome_image_label.grid(row=1, column=0, padx=2, pady=2)
 chrome_invar = IntVar()
 chrome_checkbox = Checkbutton(root, text="Google Chrome", variable=chrome_invar)
 chrome_checkbox.grid(row=1, column=1, padx=2, pady=2)
+# endregion
 
-# Opera
-
-
+# region Opera
 # Load image
-opera_image = Image.open(".\\Resources\\opera.png")  # Replace "example.png" with your image file path
-opera_image = opera_image.resize((20, 20))  # Resize the image to your desired dimensions
+opera_image = Image.open(".\\Resources\\opera.png")
+opera_image = opera_image.resize((20, 20))
 opera_photo = ImageTk.PhotoImage(opera_image)
 
 # Display image
@@ -123,13 +129,12 @@ opera_image_label.grid(row=2, column=0, padx=2, pady=2)
 opera_invar = IntVar()
 opera_checkbox = Checkbutton(root, text="Opera", variable=opera_invar)
 opera_checkbox.grid(row=2, column=1, padx=2, pady=2)
+# endregion
 
-# Iobit Uninstaller
-
-
+# region Iobit Uninstaller
 # Load image
-iobitu_image = Image.open(".\\Resources\\iobit-uninstaller.png")  # Replace "example.png" with your image file path
-iobitu_image = iobitu_image.resize((20, 20))  # Resize the image to your desired dimensions
+iobitu_image = Image.open(".\\Resources\\iobit-uninstaller.png")
+iobitu_image = iobitu_image.resize((20, 20))
 iobitu_photo = ImageTk.PhotoImage(iobitu_image)
 
 # Display image
@@ -140,13 +145,12 @@ iobitu_image_label.grid(row=3, column=0, padx=2, pady=2)
 iobitu_invar = IntVar()
 iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller", variable=iobitu_invar)
 iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2)
+# endregion
 
-# Advanced Systemcare
-
-
+# region Advanced Systemcare
 # Load image
-asystemcare_image = Image.open(".\\Resources\\advenced-systemcare.png")  # Replace "example.png" with your image file path
-asystemcare_image = asystemcare_image.resize((20, 20))  # Resize the image to your desired dimensions
+asystemcare_image = Image.open(".\\Resources\\advenced-systemcare.png")
+asystemcare_image = asystemcare_image.resize((20, 20))
 asystemcare_photo = ImageTk.PhotoImage(asystemcare_image)
 
 # Display image
@@ -157,13 +161,12 @@ asystemcare_image_label.grid(row=4, column=0, padx=2, pady=2)
 asystemcare_invar = IntVar()
 asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare", variable=asystemcare_invar)
 asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2)
+# endregion
 
-# Avast
-
-
+# region Avast
 # Load image
-avast_image = Image.open(".\\Resources\\avast.png")  # Replace "example.png" with your image file path
-avast_image = avast_image.resize((20, 20))  # Resize the image to your desired dimensions
+avast_image = Image.open(".\\Resources\\avast.png")
+avast_image = avast_image.resize((20, 20))
 avast_photo = ImageTk.PhotoImage(avast_image)
 
 # Display image
@@ -174,10 +177,56 @@ avast_image_label.grid(row=5, column=0, padx=2, pady=2)
 avast_invar = IntVar()
 avast_checkbox = Checkbutton(root, text="Avast", variable=avast_invar)
 avast_checkbox.grid(row=5, column=1, padx=2, pady=2)
+# endregion
+
+# region WinRar
+winrar_image = Image.open(".\\Resources\\winrar.png")
+winrar_image = winrar_image.resize((20, 20))
+winrar_photo = ImageTk.PhotoImage(winrar_image)
+
+# Display image
+winrar_image_label = tk.Label(root, image=winrar_photo)
+winrar_image_label.grid(row=6, column=0, padx=2, pady=2)
+
+# Checkbox
+winrar_invar = IntVar()
+winrar_checkbox = Checkbutton(root, text="WinRar", variable=winrar_invar)
+winrar_checkbox.grid(row=6, column=1, padx=2, pady=2)
+# endregion
+
+# region Daemon Tools
+daemon_image = Image.open(".\\Resources\\daemon-tools.png")
+daemon_image = daemon_image.resize((20, 20))
+daemon_photo = ImageTk.PhotoImage(daemon_image)
+
+# Display image
+daemon_image_label = tk.Label(root, image=daemon_photo)
+daemon_image_label.grid(row=7, column=0, padx=2, pady=2)
+
+# Checkbox
+daemon_invar = IntVar()
+daemon_checkbox = Checkbutton(root, text="Daemon Tools", variable=daemon_invar)
+daemon_checkbox.grid(row=7, column=1, padx=2, pady=2)
+# endregion
+
+# region qBittorent
+qbit_image = Image.open(".\\Resources\\qbittorrent.png")
+qbit_image = qbit_image.resize((20, 20))
+qbit_photo = ImageTk.PhotoImage(qbit_image)
+
+# Display image
+qbit_image_label = tk.Label(root, image=qbit_photo)
+qbit_image_label.grid(row=8, column=0, padx=2, pady=2)
+
+# Checkbox
+qbit_invar = IntVar()
+qbit_checkbox = Checkbutton(root, text="qBittorrtent", variable=qbit_invar)
+qbit_checkbox.grid(row=8, column=1, padx=2, pady=2)
+# endregion
 
 # Button
 button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=6, column=0, padx=2, pady=2, columnspan=3)
+button.grid(row=9, column=0, padx=2, pady=2, columnspan=3)
 
 # Main
 if __name__ == '__main__':
