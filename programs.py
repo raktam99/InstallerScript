@@ -1,13 +1,13 @@
 import os
 
-
+installer_path = f"{os.path.expanduser('~')}\\Downloads\\Downloaded Installers"
 # Class for apps
 class App:
     def __init__(self, name, url, flags):
         self.name = name
         self.url = url
         self.flags = flags
-        self.path = f"{os.getcwd()}\\Installers\\{name}Setup.exe"
+        self.path = f"{installer_path}\\{name}Setup.exe"
 
 
 chrome = App("Chrome",

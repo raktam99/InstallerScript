@@ -7,6 +7,7 @@ import requests
 import subprocess
 import programs
 import time
+import atexit
 import signal
 
 
@@ -30,9 +31,8 @@ def install_app(application):
     try:
         cmd = [application.path] + application.flags
         print(f"{application.name}...")
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         p.wait()
-        # os.kill(p.pid, signal.SIGTERM)
         print(f"Installed {application.name} successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error installing {application.name}: {e}")
@@ -66,6 +66,9 @@ def bttn_click():
     if(qbit_invar.get() == 1):
         programs_to_install.append(programs.qbittorrent)
 
+    os.mkdir(programs.installer_path)
+    print("Created directory where installers will be stored!")
+
     print("Downloading Programs...")
     for program in programs_to_install:
         download_app(program)
@@ -78,12 +81,9 @@ def bttn_click():
     time.sleep(2)
     print("Removing installers...")
 
-    # for program in programs_to_install:
-        # os.remove(program.path)
-
     print("Done!")
 
-    quit()
+    exit()
 
 
 # List for programs that will be installed
