@@ -1,8 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import Checkbutton, IntVar
-from PIL import Image
-from PIL import ImageTk
+from PIL import Image, ImageTk
 import requests
 import subprocess
 import programs
@@ -15,7 +14,8 @@ def download_app(application):
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     try:
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/111.0.0.0 Safari/537.36'
         }
         response = requests.get(application.url, headers=headers)
         response.raise_for_status()  # Check for HTTP errors
@@ -30,10 +30,10 @@ def download_app(application):
 
 # Installer function
 def install_app(application):
+    print(f"{application.name}...")
+    path = f"{programs.installer_path}\\{application.name}Setup.exe"
+    cmd = [path] + application.flags
     try:
-        print(f"{application.name}...")
-        path = f"{programs.installer_path}\\{application.name}Setup.exe"
-        cmd = [path] + application.flags
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         p.wait()
         print(f"Installed {application.name} successfully!")
@@ -90,7 +90,7 @@ def bttn_click():
     print("Downloading Programs...")
     for program in programs_to_install:
         download_app(program)
-    exit()
+
     print("Installing programs...")
     for program in programs_to_install:
         install_app(program)
@@ -316,7 +316,7 @@ teamviewer_checkbox.grid(row=13, column=1, padx=2, pady=2, sticky="w")
 
 # Button
 button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=14, column=0, padx=2, pady=2, columnspan=3)
+button.grid(row=14, column=0, padx=2, pady=2, columnspan=2)
 
 # Main
 if __name__ == '__main__':
