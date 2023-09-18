@@ -58,3 +58,7 @@ discord = App("Discord",
 steam = App("Steam",
             "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe",
             ["/S"])
+
+teamviewer = App("TeamViewer",
+                 "https://dl.teamviewer.com/download/version_15x/TeamViewer_Setup_x64.exe?utm_source=google&utm_medium=cpc&utm_campaign=restofeurope%7Cb%7Cpr%7C22%7Caug%7Ctv-core-brand-only-exact-sn%7Cnew%7Ct0%7C0&utm_content=Exact&utm_term=teamviewer&ref=https%3A%2F%2Fwww.teamviewer.com%2Fen%2Fdownload%2Fwindows%2F%3Futm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3Drestofeurope%257Cb%257Cpr%257C22%257Caug%257Ctv-core-brand-only-exact-sn%257Cnew%257Ct0%257C0%26utm_content%3DExact%26utm_term%3Dteamviewer",
+                 ["/S"])

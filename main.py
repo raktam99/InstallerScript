@@ -14,7 +14,10 @@ def download_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     try:
-        response = requests.get(application.url)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
+        }
+        response = requests.get(application.url, headers=headers)
         response.raise_for_status()  # Check for HTTP errors
 
         with open(path, 'wb') as f:
@@ -77,6 +80,9 @@ def bttn_click():
 
     if steam_invar.get() == 1:
         programs_to_install.append(programs.steam)
+
+    if teamviewer_invar.get() == 1:
+        programs_to_install.append(programs.teamviewer)
 
     os.mkdir(programs.installer_path)
     print("Created directory where installers will be stored!")
@@ -295,9 +301,24 @@ steam_checkbox = Checkbutton(root, text="Steam", variable=steam_invar)
 steam_checkbox.grid(row=12, column=1, padx=2, pady=2, sticky="w")
 # endregion
 
+# region TeamViewer
+teamviewer_image = Image.open(".\\Resources\\teamviewer.png")
+teamviewer_image = teamviewer_image.resize((20, 20))
+teamviewer_photo = ImageTk.PhotoImage(teamviewer_image)
+
+# Display image
+teamviewer_image_label = tk.Label(root, image=teamviewer_photo)
+teamviewer_image_label.grid(row=13, column=0, padx=2, pady=2)
+
+# Checkbox
+teamviewer_invar = IntVar()
+teamviewer_checkbox = Checkbutton(root, text="TeamViewer", variable=teamviewer_invar)
+teamviewer_checkbox.grid(row=13, column=1, padx=2, pady=2, sticky="w")
+# endregion
+
 # Button
 button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=13, column=0, padx=2, pady=2, columnspan=3)
+button.grid(row=14, column=0, padx=2, pady=2, columnspan=3)
 
 # Main
 if __name__ == '__main__':
