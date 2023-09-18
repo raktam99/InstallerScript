@@ -90,7 +90,7 @@ def bttn_click():
     print("Downloading Programs...")
     for program in programs_to_install:
         download_app(program)
-
+    exit()
     print("Installing programs...")
     for program in programs_to_install:
         install_app(program)
@@ -100,8 +100,6 @@ def bttn_click():
     print("Removing installers...")
 
     print("Done!")
-
-    exit()
 
 
 # List for programs that will be installed
