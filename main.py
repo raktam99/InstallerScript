@@ -13,11 +13,7 @@ def download_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Chrome/111.0.0.0 Safari/537.36'
-        }
-        response = requests.get(application.url, headers=headers)
+        response = requests.get(application.url)
         response.raise_for_status()  # Check for HTTP errors
 
         with open(path, 'wb') as f:
