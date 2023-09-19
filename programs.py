@@ -36,7 +36,7 @@ winrar = App("WinRar",
              ["/S"])
 
 daemon_tools = App("Daemon_Tools",
-                   "https://file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com/40f7fe6349416c00d871ad7a543ae0bf784c5ed8/DTLite1120-2105.exe?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Z42SJEYMLCPREOBRVPTN%2F20230915%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20230915T153032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=67a4350688f51b72f3f36090ed4d5eded1de067f9591509c7230f52eb446cf91",
+                   "https://file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com/40f7fe6349416c00d871ad7a543ae0bf784c5ed8/DTLite1120-2105.exe?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Z42SJEYMLCPREOBRVPTN%2F20230919%2Ffra1%2Fs3%2Faws4_request&X-Amz-Date=20230919T121516Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=3491c3aae14f06129f054c5a3a70497b28a00eedb1bf62a4b6cfc2f0a138a3b7",
                    ["/S"])
 
 qbittorrent = App("qBittorrent",
@@ -44,11 +44,11 @@ qbittorrent = App("qBittorrent",
                   ["/S"])
 
 java = App("Java",
-           "https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe&BHost=javadl.sun.com&File=jre-8u381-windows-i586.exe&AuthParam=1694808733_6efac947c6f0b1a5bcd0925cae1620f7&ext=.exe",
+           "https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jre-8u381-windows-i586.exe&BHost=javadl.sun.com&File=jre-8u381-windows-i586.exe&AuthParam=1695127012_c76fab073fce2a404d4e4b4647ce7992&ext=.exe",
            ["/s"])
 
 teams = App("Teams",
-            "https://statics.teams.cdn.office.net/production-windows/1.6.00.24078/TeamsSetup.exe?sv=2019-07-07&sr=b&sig=epTp9LL9jmIwrX6YwTigE%2FYFkjzQeSyagrxbInZEzc0%3D&se=2023-09-15T20%3A57%3A21Z&sp=r&rscd=attachment%3B%20filename%3D%22TeamsSetup_c_w_.exe%22",
+            "https://statics.teams.cdn.office.net/production-windows/1.6.00.24078/TeamsSetup.exe?sv=2019-07-07&sr=b&sig=kYc6Nj5Jp6%2F%2FBEImeNhqv6IHiC10LbO8Npl8ty3pEzk%3D&se=2023-09-19T13%3A14%3A08Z&sp=r&rscd=attachment%3B%20filename%3D%22TeamsSetup_c_w_.exe%22",
             ["-s"])
 
 discord = App("Discord",

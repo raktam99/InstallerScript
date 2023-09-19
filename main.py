@@ -13,7 +13,9 @@ def download_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     try:
-        response = requests.get(application.url)
+        headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/51.0.2704.103 Safari/537.36"}
+        response = requests.get(application.url, headers=headers)
         response.raise_for_status()  # Check for HTTP errors
 
         with open(path, 'wb') as f:
@@ -80,7 +82,8 @@ def bttn_click():
     if teamviewer_invar.get() == 1:
         programs_to_install.append(programs.teamviewer)
 
-    os.mkdir(programs.installer_path)
+    if not os.path.isdir(programs.installer_path):
+        os.mkdir(programs.installer_path)
     print("Created directory where installers will be stored!")
 
     print("Downloading Programs...")
