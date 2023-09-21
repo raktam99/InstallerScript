@@ -1,9 +1,9 @@
 import os
 
 installer_path = f"{os.path.expanduser('~')}\\Downloads\\Downloaded Installers"
+
+
 # Class for apps
-
-
 class App:
     def __init__(self, name, url, flags):
         self.name = name
