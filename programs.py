@@ -19,7 +19,7 @@ chrome = App("Chrome",
 
 opera = App("Opera",
             "https://net.geo.opera.com/opera_gx/stable/windows?utm_tryagain=yes&utm_source=google&utm_medium=ose&utm_campaign=(none)&http_referrer=https%3A%2F%2Fwww.google.com%2F&utm_site=opera_com&",
-            ["/silent", "/launchbrowser=0"])
+            ["/silent", "/launchbrowser=1"])
 
 iobit_uninstaller = App("Iobit_Uninstaller",
                         "https://cdn.iobit.com/dl/iobituninstaller.exe",

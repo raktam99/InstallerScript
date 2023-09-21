@@ -1,79 +1,8 @@
-import os
 import tkinter as tk
 from tkinter import Checkbutton
 from PIL import Image, ImageTk
-import requests
-import subprocess
-import programs
 import box_handlers as bh
-
-
-# Install click handler function
-def download_bttn_click():
-    if not os.path.isdir(programs.installer_path):
-        os.mkdir(programs.installer_path)
-    print("Created directory where installers will be stored!")
-
-    if not len(programs.programs_to_install) == 0:
-        print("Downloading Programs...")
-        for program in programs.programs_to_install:
-            download_app(program)
-
-        print("Downloaded everything!")
-    else:
-        print("Nothing is selected")
-
-
-# Install click handler function
-def install_bttn_click():
-    if not len(programs.programs_to_install) == 0:
-        print("Installing programs...")
-
-        for program in programs.programs_to_install:
-            install_app(program)
-            programs.installed_programs.append(program)
-
-        print("Everything is installed!")
-    else:
-        print("Nothing to install!")
-
-
-# Downloader function
-def download_app(application):
-    print(f"{application.name}...")
-    path = f"{programs.installer_path}\\{application.name}Setup.exe"
-
-    if not os.path.isfile(path):
-        try:
-            response = requests.get(application.url, allow_redirects=True)
-            response.raise_for_status()  # Check for HTTP errors
-
-            with open(path, 'wb') as f:
-                f.write(response.content)
-
-            print(f"Downloaded {application.name} successfully!")
-        except Exception as e:
-            print(f"Error: {str(e)}")
-    else:
-        print("Already downloaded!")
-
-
-# Installer function
-def install_app(application):
-    print(f"{application.name}...")
-    path = f"{programs.installer_path}\\{application.name}Setup.exe"
-    cmd = [path] + application.flags
-    if not programs.installed_programs.__contains__(application):
-        try:
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            p.wait()
-            print(f"Installed {application.name} successfully!")
-        except subprocess.CalledProcessError as e:
-            print(f"Error installing {application.name}: {e}")
-        except FileNotFoundError:
-            print(f"Installer not found at path: {path}")
-    else:
-        print("Already installed!")
+import functions as f
 
 
 # Main app window
@@ -336,11 +265,11 @@ teamviewer_checkbox.bind('<Button-1>', lambda event: bh.teamviewer_chckbx_change
 
 # region Buttons
 # Download button
-download_bttn = tk.Button(root, text="Download", width=25, command=download_bttn_click)
+download_bttn = tk.Button(root, text="Download", width=25, command=f.download_bttn_click)
 download_bttn.grid(row=16, column=0, columnspan=2, sticky="ew", pady=(20, 0))
 
 # Install button
-install_bttn = tk.Button(root, text="Install", width=25, command=install_bttn_click)
+install_bttn = tk.Button(root, text="Install", width=25, command=f.install_bttn_click)
 install_bttn.grid(row=16, column=2, columnspan=2, sticky="ew", pady=(20, 0))
 # endregion
 
