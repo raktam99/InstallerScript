@@ -45,7 +45,7 @@ def install_app(application):
 
 # Install click handler function
 def install_bttn_click():
-    if downloaded and not len(programs_to_install) == 0:
+    if not len(programs_to_install) == 0:
         print("Installing programs...")
 
         for program in programs_to_install:
@@ -53,27 +53,22 @@ def install_bttn_click():
             programs_to_install.remove(program)
 
         print("Everything is installed!")
-    elif not downloaded:
-        print("Did not download installers yet!")
     else:
         print("Nothing to install!")
 
 
 # Install click handler function
 def download_bttn_click():
-    if not len(programs_to_install) == 0:
-        if not os.path.isdir(programs.installer_path):
-            os.mkdir(programs.installer_path)
-        print("Created directory where installers will be stored!")
+    if not os.path.isdir(programs.installer_path):
+        os.mkdir(programs.installer_path)
+    print("Created directory where installers will be stored!")
 
+    if not len(programs_to_install) == 0:
         print("Downloading Programs...")
         for program in programs_to_install:
             download_app(program)
 
-        global downloaded
-        downloaded = True
-
-        print("Downoladed everything!")
+        print("Downloaded everything!")
     else:
         print("Nothing is selected")
 
@@ -173,7 +168,6 @@ def teamviewer_chckbx_changed():
 
 # Variables
 programs_to_install = []
-downloaded = False
 installed = False
 
 # Main app window
