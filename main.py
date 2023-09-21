@@ -1,29 +1,30 @@
 import os
 import tkinter as tk
-from tkinter import Checkbutton, IntVar
+from tkinter import Checkbutton
 from PIL import Image, ImageTk
 import requests
 import subprocess
 import programs
-import time
 
 
 # Downloader function
 def download_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
-    try:
-        headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/51.0.2704.103 Safari/537.36"}
-        response = requests.get(application.url, headers=headers)
-        response.raise_for_status()  # Check for HTTP errors
 
-        with open(path, 'wb') as f:
-            f.write(response.content)
+    if not os.path.isfile(path):
+        try:
+            response = requests.get(application.url, allow_redirects=True)
+            response.raise_for_status()  # Check for HTTP errors
 
-        print(f"Downloaded {application.name} successfully!")
-    except Exception as e:
-        print(f"Error: {str(e)}")
+            with open(path, 'wb') as f:
+                f.write(response.content)
+
+            print(f"Downloaded {application.name} successfully!")
+        except Exception as e:
+            print(f"Error: {str(e)}")
+    else:
+        print("Already downloaded!")
 
 
 # Installer function
@@ -31,6 +32,7 @@ def install_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     cmd = [path] + application.flags
+    global programs_to_install
     try:
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         p.wait()
@@ -41,68 +43,138 @@ def install_app(application):
         print(f"Installer not found at path: {path}")
 
 
-# Click handler function
-def bttn_click():
-    if chrome_invar.get() == 1:
+# Install click handler function
+def install_bttn_click():
+    if downloaded and not len(programs_to_install) == 0:
+        print("Installing programs...")
+
+        for program in programs_to_install:
+            install_app(program)
+            programs_to_install.remove(program)
+
+        print("Everything is installed!")
+    elif not downloaded:
+        print("Did not download installers yet!")
+    else:
+        print("Nothing to install!")
+
+
+# Install click handler function
+def download_bttn_click():
+    if not len(programs_to_install) == 0:
+        if not os.path.isdir(programs.installer_path):
+            os.mkdir(programs.installer_path)
+        print("Created directory where installers will be stored!")
+
+        print("Downloading Programs...")
+        for program in programs_to_install:
+            download_app(program)
+
+        global downloaded
+        downloaded = True
+
+        print("Downoladed everything!")
+    else:
+        print("Nothing is selected")
+
+
+# region Checkbox handlers
+def chrome_chckbx_changed():
+    if not programs_to_install.__contains__(programs.chrome):
         programs_to_install.append(programs.chrome)
+    else:
+        programs_to_install.remove(programs.chrome)
 
-    if opera_invar.get() == 1:
+
+def opera_chckbx_changed():
+    if not programs_to_install.__contains__(programs.opera):
         programs_to_install.append(programs.opera)
+    else:
+        programs_to_install.remove(programs.opera)
 
-    if iobitu_invar.get() == 1:
+
+def iobitu_chckbx_changed():
+    if not programs_to_install.__contains__(programs.iobit_uninstaller):
         programs_to_install.append(programs.iobit_uninstaller)
+    else:
+        programs_to_install.remove(programs.iobit_uninstaller)
 
-    if asystemcare_invar.get() == 1:
+
+def asystemcare_chckbx_changed():
+    if not programs_to_install.__contains__(programs.advanced_systemcare):
         programs_to_install.append(programs.advanced_systemcare)
+    else:
+        programs_to_install.remove(programs.advanced_systemcare)
 
-    if avast_invar.get() == 1:
+
+def avast_chckbx_changed():
+    if not programs_to_install.__contains__(programs.avast):
         programs_to_install.append(programs.avast)
+    else:
+        programs_to_install.remove(programs.avast)
 
-    if winrar_invar.get() == 1:
+
+def winrar_chckbx_changed():
+    if not programs_to_install.__contains__(programs.winrar):
         programs_to_install.append(programs.winrar)
+    else:
+        programs_to_install.remove(programs.winrar)
 
-    if daemon_invar.get() == 1:
+
+def daemon_chckbx_changed():
+    if not programs_to_install.__contains__(programs.daemon_tools):
         programs_to_install.append(programs.daemon_tools)
+    else:
+        programs_to_install.remove(programs.daemon_tools)
 
-    if qbit_invar.get() == 1:
+
+def qbit_chckbx_changed():
+    if not programs_to_install.__contains__(programs.qbittorrent):
         programs_to_install.append(programs.qbittorrent)
+    else:
+        programs_to_install.remove(programs.qbittorrent)
 
-    if java_invar.get() == 1:
+
+def java_chckbx_changed():
+    if not programs_to_install.__contains__(programs.java):
         programs_to_install.append(programs.java)
+    else:
+        programs_to_install.remove(programs.java)
 
-    if teams_invar.get() == 1:
+
+def teams_chckbx_changed():
+    if not programs_to_install.__contains__(programs.teams):
         programs_to_install.append(programs.teams)
+    else:
+        programs_to_install.remove(programs.teams)
 
-    if dc_invar.get() == 1:
+
+def dc_chckbx_changed():
+    if not programs_to_install.__contains__(programs.discord):
         programs_to_install.append(programs.discord)
+    else:
+        programs_to_install.remove(programs.discord)
 
-    if steam_invar.get() == 1:
+
+def steam_chckbx_changed():
+    if not programs_to_install.__contains__(programs.steam):
         programs_to_install.append(programs.steam)
+    else:
+        programs_to_install.remove(programs.steam)
 
-    if teamviewer_invar.get() == 1:
+
+def teamviewer_chckbx_changed():
+    if not programs_to_install.__contains__(programs.teamviewer):
         programs_to_install.append(programs.teamviewer)
-
-    if not os.path.isdir(programs.installer_path):
-        os.mkdir(programs.installer_path)
-    print("Created directory where installers will be stored!")
-
-    print("Downloading Programs...")
-    for program in programs_to_install:
-        download_app(program)
-
-    print("Installing programs...")
-    for program in programs_to_install:
-        install_app(program)
-
-    print("Everything is installed!")
-    time.sleep(2)
-    print("Removing installers...")
-
-    print("Done!")
+    else:
+        programs_to_install.remove(programs.teamviewer)
+# endregion
 
 
-# List for programs that will be installed
+# Variables
 programs_to_install = []
+downloaded = False
+installed = False
 
 # Main app window
 root = tk.Tk()
@@ -124,9 +196,9 @@ chrome_image_label = tk.Label(root, image=chrome_photo)
 chrome_image_label.grid(row=1, column=0, padx=2, pady=2)
 
 # Checkbox
-chrome_invar = IntVar()
-chrome_checkbox = Checkbutton(root, text="Google Chrome", variable=chrome_invar)
+chrome_checkbox = Checkbutton(root, text="Google Chrome")
 chrome_checkbox.grid(row=1, column=1, padx=2, pady=2, sticky="w")
+chrome_checkbox.bind('<Button-1>', lambda event: chrome_chckbx_changed())
 # endregion
 
 # region Opera
@@ -140,9 +212,9 @@ opera_image_label = tk.Label(root, image=opera_photo)
 opera_image_label.grid(row=2, column=0, padx=2, pady=2)
 
 # Checkbox
-opera_invar = IntVar()
-opera_checkbox = Checkbutton(root, text="Opera", variable=opera_invar)
+opera_checkbox = Checkbutton(root, text="Opera")
 opera_checkbox.grid(row=2, column=1, padx=2, pady=2, sticky="w")
+opera_checkbox.bind('<Button-1>', lambda event: opera_chckbx_changed())
 # endregion
 
 # region Iobit Uninstaller
@@ -156,9 +228,9 @@ iobitu_image_label = tk.Label(root, image=iobitu_photo)
 iobitu_image_label.grid(row=3, column=0, padx=2, pady=2)
 
 # Checkbox
-iobitu_invar = IntVar()
-iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller", variable=iobitu_invar)
+iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller")
 iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2, sticky="w")
+iobitu_checkbox.bind('<Button-1>', lambda event: iobitu_chckbx_changed())
 # endregion
 
 # region Advanced Systemcare
@@ -172,9 +244,9 @@ asystemcare_image_label = tk.Label(root, image=asystemcare_photo)
 asystemcare_image_label.grid(row=4, column=0, padx=2, pady=2)
 
 # Checkbox
-asystemcare_invar = IntVar()
-asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare", variable=asystemcare_invar)
+asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare")
 asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2, sticky="w")
+asystemcare_checkbox.bind('<Button-1>', lambda event: asystemcare_chckbx_changed())
 # endregion
 
 # region Avast
@@ -188,9 +260,9 @@ avast_image_label = tk.Label(root, image=avast_photo)
 avast_image_label.grid(row=5, column=0, padx=2, pady=2)
 
 # Checkbox
-avast_invar = IntVar()
-avast_checkbox = Checkbutton(root, text="Avast", variable=avast_invar)
+avast_checkbox = Checkbutton(root, text="Avast")
 avast_checkbox.grid(row=5, column=1, padx=2, pady=2, sticky="w")
+avast_checkbox.bind('<Button-1>', lambda event: avast_chckbx_changed())
 # endregion
 
 # region WinRar
@@ -203,9 +275,9 @@ winrar_image_label = tk.Label(root, image=winrar_photo)
 winrar_image_label.grid(row=6, column=0, padx=2, pady=2)
 
 # Checkbox
-winrar_invar = IntVar()
-winrar_checkbox = Checkbutton(root, text="WinRar", variable=winrar_invar)
+winrar_checkbox = Checkbutton(root, text="WinRar")
 winrar_checkbox.grid(row=6, column=1, padx=2, pady=2, sticky="w")
+winrar_checkbox.bind('<Button-1>', lambda event: winrar_chckbx_changed())
 # endregion
 
 # region Daemon Tools
@@ -218,9 +290,9 @@ daemon_image_label = tk.Label(root, image=daemon_photo)
 daemon_image_label.grid(row=7, column=0, padx=2, pady=2)
 
 # Checkbox
-daemon_invar = IntVar()
-daemon_checkbox = Checkbutton(root, text="Daemon Tools", variable=daemon_invar)
+daemon_checkbox = Checkbutton(root, text="Daemon Tools")
 daemon_checkbox.grid(row=7, column=1, padx=2, pady=2, sticky="w")
+daemon_checkbox.bind('<Button-1>', lambda event: daemon_chckbx_changed())
 # endregion
 
 # region qBittorent
@@ -233,9 +305,9 @@ qbit_image_label = tk.Label(root, image=qbit_photo)
 qbit_image_label.grid(row=8, column=0, padx=2, pady=2)
 
 # Checkbox
-qbit_invar = IntVar()
-qbit_checkbox = Checkbutton(root, text="qBittorrtent", variable=qbit_invar)
+qbit_checkbox = Checkbutton(root, text="qBittorrtent")
 qbit_checkbox.grid(row=8, column=1, padx=2, pady=2, sticky="w")
+qbit_checkbox.bind('<Button-1>', lambda event: qbit_chckbx_changed())
 # endregion
 
 # region Java
@@ -248,9 +320,9 @@ java_image_label = tk.Label(root, image=java_photo)
 java_image_label.grid(row=9, column=0, padx=2, pady=2)
 
 # Checkbox
-java_invar = IntVar()
-java_checkbox = Checkbutton(root, text="Java", variable=java_invar)
+java_checkbox = Checkbutton(root, text="Java")
 java_checkbox.grid(row=9, column=1, padx=2, pady=2, sticky="w")
+java_checkbox.bind('<Button-1>', lambda event: java_chckbx_changed())
 # endregion
 
 # region Teams
@@ -263,9 +335,9 @@ teams_image_label = tk.Label(root, image=teams_photo)
 teams_image_label.grid(row=10, column=0, padx=2, pady=2)
 
 # Checkbox
-teams_invar = IntVar()
-teams_checkbox = Checkbutton(root, text="Teams", variable=teams_invar)
+teams_checkbox = Checkbutton(root, text="Teams")
 teams_checkbox.grid(row=10, column=1, padx=2, pady=2, sticky="w")
+teams_checkbox.bind('<Button-1>', lambda event: teams_chckbx_changed())
 # endregion
 
 # region Discord
@@ -278,9 +350,9 @@ dc_image_label = tk.Label(root, image=dc_photo)
 dc_image_label.grid(row=11, column=0, padx=2, pady=2)
 
 # Checkbox
-dc_invar = IntVar()
-dc_checkbox = Checkbutton(root, text="Discord", variable=dc_invar)
+dc_checkbox = Checkbutton(root, text="Discord")
 dc_checkbox.grid(row=11, column=1, padx=2, pady=2, sticky="w")
+dc_checkbox.bind('<Button-1>', lambda event: dc_chckbx_changed())
 # endregion
 
 # region Steam
@@ -293,9 +365,9 @@ steam_image_label = tk.Label(root, image=steam_photo)
 steam_image_label.grid(row=12, column=0, padx=2, pady=2)
 
 # Checkbox
-steam_invar = IntVar()
-steam_checkbox = Checkbutton(root, text="Steam", variable=steam_invar)
+steam_checkbox = Checkbutton(root, text="Steam")
 steam_checkbox.grid(row=12, column=1, padx=2, pady=2, sticky="w")
+steam_checkbox.bind('<Button-1>', lambda event: steam_chckbx_changed())
 # endregion
 
 # region TeamViewer
@@ -308,14 +380,18 @@ teamviewer_image_label = tk.Label(root, image=teamviewer_photo)
 teamviewer_image_label.grid(row=13, column=0, padx=2, pady=2)
 
 # Checkbox
-teamviewer_invar = IntVar()
-teamviewer_checkbox = Checkbutton(root, text="TeamViewer", variable=teamviewer_invar)
+teamviewer_checkbox = Checkbutton(root, text="TeamViewer")
 teamviewer_checkbox.grid(row=13, column=1, padx=2, pady=2, sticky="w")
+teamviewer_checkbox.bind('<Button-1>', lambda event: teamviewer_chckbx_changed())
 # endregion
 
-# Button
-button = tk.Button(root, text="Install", command=bttn_click)
-button.grid(row=14, column=0, padx=2, pady=2, columnspan=2)
+# Install button
+install_bttn = tk.Button(root, text="Install", command=install_bttn_click)
+install_bttn.grid(row=14, column=0, padx=2, pady=2)
+
+# Download button
+download_bttn = tk.Button(root, text="Download", command=download_bttn_click)
+download_bttn.grid(row=14, column=1, padx=2, pady=2)
 
 # Main
 if __name__ == '__main__':
