@@ -32,15 +32,17 @@ def install_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     cmd = [path] + application.flags
-    global programs_to_install
-    try:
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-        p.wait()
-        print(f"Installed {application.name} successfully!")
-    except subprocess.CalledProcessError as e:
-        print(f"Error installing {application.name}: {e}")
-    except FileNotFoundError:
-        print(f"Installer not found at path: {path}")
+    if not installed_programs.__contains__(application):
+        try:
+            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            p.wait()
+            print(f"Installed {application.name} successfully!")
+        except subprocess.CalledProcessError as e:
+            print(f"Error installing {application.name}: {e}")
+        except FileNotFoundError:
+            print(f"Installer not found at path: {path}")
+    else:
+        print("Already installed!")
 
 
 # Install click handler function
@@ -50,7 +52,7 @@ def install_bttn_click():
 
         for program in programs_to_install:
             install_app(program)
-            programs_to_install.remove(program)
+            installed_programs.append(program)
 
         print("Everything is installed!")
     else:
@@ -168,6 +170,7 @@ def teamviewer_chckbx_changed():
 
 # Variables
 programs_to_install = []
+installed_programs = []
 installed = False
 
 # Main app window
