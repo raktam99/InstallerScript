@@ -8,7 +8,8 @@ import subprocess
 def download_bttn_click():
     if not os.path.isdir(programs.installer_path):
         os.mkdir(programs.installer_path)
-    print("Created directory where installers will be stored!")
+        print("Created directory where installers will be stored!\n"
+              f"{programs.installer_path}")
 
     if not len(programs.programs_to_install) == 0:
         print("Downloading Programs...")
@@ -61,7 +62,7 @@ def install_app(application):
     cmd = [path] + application.flags
     if not programs.installed_programs.__contains__(application):
         try:
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            p = subprocess.Popen(cmd)
             p.wait()
             print(f"Installed {application.name} successfully!")
         except subprocess.CalledProcessError as e:
