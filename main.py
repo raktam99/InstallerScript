@@ -46,20 +46,6 @@ def install_app(application):
 
 
 # Install click handler function
-def install_bttn_click():
-    if not len(programs_to_install) == 0:
-        print("Installing programs...")
-
-        for program in programs_to_install:
-            install_app(program)
-            installed_programs.append(program)
-
-        print("Everything is installed!")
-    else:
-        print("Nothing to install!")
-
-
-# Install click handler function
 def download_bttn_click():
     if not os.path.isdir(programs.installer_path):
         os.mkdir(programs.installer_path)
@@ -75,7 +61,21 @@ def download_bttn_click():
         print("Nothing is selected")
 
 
-# region Checkbox handlers
+# Install click handler function
+def install_bttn_click():
+    if not len(programs_to_install) == 0:
+        print("Installing programs...")
+
+        for program in programs_to_install:
+            install_app(program)
+            installed_programs.append(program)
+
+        print("Everything is installed!")
+    else:
+        print("Nothing to install!")
+
+
+# region Box handlers
 def chrome_chckbx_changed():
     if not programs_to_install.__contains__(programs.chrome):
         programs_to_install.append(programs.chrome)
@@ -179,6 +179,7 @@ def dotnet_chckbx_changed():
         programs_to_install.append(programs.dotnet)
     else:
         programs_to_install.remove(programs.dotnet)
+
 # endregion
 
 
@@ -192,9 +193,44 @@ root = tk.Tk()
 root.title("Installer")
 root.resizable(False, False)
 
-# Text
+# region Labels
 choose_label = tk.Label(root, text="Please choose")
-choose_label.grid(row=0, column=0, padx=2, pady=2, columnspan=2)
+choose_label.grid(row=0, column=0, columnspan=4)
+
+antiviruses_label = tk.Label(root, text="Antiviruses:")
+antiviruses_label.grid(row=1, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+browser_label = tk.Label(root, text="Browsers:")
+browser_label.grid(row=3, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+utilities_label = tk.Label(root, text="Utilities:")
+utilities_label.grid(row=5, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+meeting_label = tk.Label(root, text="Meeting:")
+meeting_label.grid(row=7, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+developer_label = tk.Label(root, text="Developer tools:")
+developer_label.grid(row=9, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+other_label = tk.Label(root, text="Other:")
+other_label.grid(row=12, column=0, columnspan=2, sticky="w", pady=(5, 0))
+# endregion
+
+# region Avast
+# Load image
+avast_image = Image.open(".\\Resources\\avast.png")
+avast_image = avast_image.resize((20, 20))
+avast_photo = ImageTk.PhotoImage(avast_image)
+
+# Display image
+avast_image_label = tk.Label(root, image=avast_photo)
+avast_image_label.grid(row=2, column=0)
+
+# Checkbox
+avast_checkbox = Checkbutton(root, text="Avast")
+avast_checkbox.grid(row=2, column=1, sticky="w")
+avast_checkbox.bind('<Button-1>', lambda event: avast_chckbx_changed())
+# endregion
 
 # region Chrome
 # Load image
@@ -204,11 +240,11 @@ chrome_photo = ImageTk.PhotoImage(chrome_image)
 
 # Display image
 chrome_image_label = tk.Label(root, image=chrome_photo)
-chrome_image_label.grid(row=1, column=0, padx=2, pady=2)
+chrome_image_label.grid(row=4, column=0)
 
 # Checkbox
 chrome_checkbox = Checkbutton(root, text="Google Chrome")
-chrome_checkbox.grid(row=1, column=1, padx=2, pady=2, sticky="w")
+chrome_checkbox.grid(row=4, column=1, sticky="w")
 chrome_checkbox.bind('<Button-1>', lambda event: chrome_chckbx_changed())
 # endregion
 
@@ -220,11 +256,11 @@ opera_photo = ImageTk.PhotoImage(opera_image)
 
 # Display image
 opera_image_label = tk.Label(root, image=opera_photo)
-opera_image_label.grid(row=2, column=0, padx=2, pady=2)
+opera_image_label.grid(row=4, column=2)
 
 # Checkbox
 opera_checkbox = Checkbutton(root, text="Opera")
-opera_checkbox.grid(row=2, column=1, padx=2, pady=2, sticky="w")
+opera_checkbox.grid(row=4, column=3, sticky="w")
 opera_checkbox.bind('<Button-1>', lambda event: opera_chckbx_changed())
 # endregion
 
@@ -236,11 +272,11 @@ iobitu_photo = ImageTk.PhotoImage(iobitu_image)
 
 # Display image
 iobitu_image_label = tk.Label(root, image=iobitu_photo)
-iobitu_image_label.grid(row=3, column=0, padx=2, pady=2)
+iobitu_image_label.grid(row=6, column=0)
 
 # Checkbox
 iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller")
-iobitu_checkbox.grid(row=3, column=1, padx=2, pady=2, sticky="w")
+iobitu_checkbox.grid(row=6, column=1, sticky="w")
 iobitu_checkbox.bind('<Button-1>', lambda event: iobitu_chckbx_changed())
 # endregion
 
@@ -252,88 +288,12 @@ asystemcare_photo = ImageTk.PhotoImage(asystemcare_image)
 
 # Display image
 asystemcare_image_label = tk.Label(root, image=asystemcare_photo)
-asystemcare_image_label.grid(row=4, column=0, padx=2, pady=2)
+asystemcare_image_label.grid(row=6, column=2)
 
 # Checkbox
 asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare")
-asystemcare_checkbox.grid(row=4, column=1, padx=2, pady=2, sticky="w")
+asystemcare_checkbox.grid(row=6, column=3, sticky="w")
 asystemcare_checkbox.bind('<Button-1>', lambda event: asystemcare_chckbx_changed())
-# endregion
-
-# region Avast
-# Load image
-avast_image = Image.open(".\\Resources\\avast.png")
-avast_image = avast_image.resize((20, 20))
-avast_photo = ImageTk.PhotoImage(avast_image)
-
-# Display image
-avast_image_label = tk.Label(root, image=avast_photo)
-avast_image_label.grid(row=5, column=0, padx=2, pady=2)
-
-# Checkbox
-avast_checkbox = Checkbutton(root, text="Avast")
-avast_checkbox.grid(row=5, column=1, padx=2, pady=2, sticky="w")
-avast_checkbox.bind('<Button-1>', lambda event: avast_chckbx_changed())
-# endregion
-
-# region WinRar
-winrar_image = Image.open(".\\Resources\\winrar.png")
-winrar_image = winrar_image.resize((20, 20))
-winrar_photo = ImageTk.PhotoImage(winrar_image)
-
-# Display image
-winrar_image_label = tk.Label(root, image=winrar_photo)
-winrar_image_label.grid(row=6, column=0, padx=2, pady=2)
-
-# Checkbox
-winrar_checkbox = Checkbutton(root, text="WinRar")
-winrar_checkbox.grid(row=6, column=1, padx=2, pady=2, sticky="w")
-winrar_checkbox.bind('<Button-1>', lambda event: winrar_chckbx_changed())
-# endregion
-
-# region Daemon Tools
-daemon_image = Image.open(".\\Resources\\daemon-tools.png")
-daemon_image = daemon_image.resize((20, 20))
-daemon_photo = ImageTk.PhotoImage(daemon_image)
-
-# Display image
-daemon_image_label = tk.Label(root, image=daemon_photo)
-daemon_image_label.grid(row=7, column=0, padx=2, pady=2)
-
-# Checkbox
-daemon_checkbox = Checkbutton(root, text="Daemon Tools")
-daemon_checkbox.grid(row=7, column=1, padx=2, pady=2, sticky="w")
-daemon_checkbox.bind('<Button-1>', lambda event: daemon_chckbx_changed())
-# endregion
-
-# region qBittorent
-qbit_image = Image.open(".\\Resources\\qbittorrent.png")
-qbit_image = qbit_image.resize((20, 20))
-qbit_photo = ImageTk.PhotoImage(qbit_image)
-
-# Display image
-qbit_image_label = tk.Label(root, image=qbit_photo)
-qbit_image_label.grid(row=8, column=0, padx=2, pady=2)
-
-# Checkbox
-qbit_checkbox = Checkbutton(root, text="qBittorrtent")
-qbit_checkbox.grid(row=8, column=1, padx=2, pady=2, sticky="w")
-qbit_checkbox.bind('<Button-1>', lambda event: qbit_chckbx_changed())
-# endregion
-
-# region Java
-java_image = Image.open(".\\Resources\\java.png")
-java_image = java_image.resize((20, 20))
-java_photo = ImageTk.PhotoImage(java_image)
-
-# Display image
-java_image_label = tk.Label(root, image=java_photo)
-java_image_label.grid(row=9, column=0, padx=2, pady=2)
-
-# Checkbox
-java_checkbox = Checkbutton(root, text="Java")
-java_checkbox.grid(row=9, column=1, padx=2, pady=2, sticky="w")
-java_checkbox.bind('<Button-1>', lambda event: java_chckbx_changed())
 # endregion
 
 # region Teams
@@ -343,11 +303,11 @@ teams_photo = ImageTk.PhotoImage(teams_image)
 
 # Display image
 teams_image_label = tk.Label(root, image=teams_photo)
-teams_image_label.grid(row=10, column=0, padx=2, pady=2)
+teams_image_label.grid(row=8, column=0)
 
 # Checkbox
 teams_checkbox = Checkbutton(root, text="Teams")
-teams_checkbox.grid(row=10, column=1, padx=2, pady=2, sticky="w")
+teams_checkbox.grid(row=8, column=1, sticky="w")
 teams_checkbox.bind('<Button-1>', lambda event: teams_chckbx_changed())
 # endregion
 
@@ -358,42 +318,12 @@ dc_photo = ImageTk.PhotoImage(dc_image)
 
 # Display image
 dc_image_label = tk.Label(root, image=dc_photo)
-dc_image_label.grid(row=11, column=0, padx=2, pady=2)
+dc_image_label.grid(row=8, column=2)
 
 # Checkbox
 dc_checkbox = Checkbutton(root, text="Discord")
-dc_checkbox.grid(row=11, column=1, padx=2, pady=2, sticky="w")
+dc_checkbox.grid(row=8, column=3, sticky="w")
 dc_checkbox.bind('<Button-1>', lambda event: dc_chckbx_changed())
-# endregion
-
-# region Steam
-steam_image = Image.open(".\\Resources\\steam.png")
-steam_image = steam_image.resize((20, 20))
-steam_photo = ImageTk.PhotoImage(steam_image)
-
-# Display image
-steam_image_label = tk.Label(root, image=steam_photo)
-steam_image_label.grid(row=12, column=0, padx=2, pady=2)
-
-# Checkbox
-steam_checkbox = Checkbutton(root, text="Steam")
-steam_checkbox.grid(row=12, column=1, padx=2, pady=2, sticky="w")
-steam_checkbox.bind('<Button-1>', lambda event: steam_chckbx_changed())
-# endregion
-
-# region TeamViewer
-teamviewer_image = Image.open(".\\Resources\\teamviewer.png")
-teamviewer_image = teamviewer_image.resize((20, 20))
-teamviewer_photo = ImageTk.PhotoImage(teamviewer_image)
-
-# Display image
-teamviewer_image_label = tk.Label(root, image=teamviewer_photo)
-teamviewer_image_label.grid(row=13, column=0, padx=2, pady=2)
-
-# Checkbox
-teamviewer_checkbox = Checkbutton(root, text="TeamViewer")
-teamviewer_checkbox.grid(row=13, column=1, padx=2, pady=2, sticky="w")
-teamviewer_checkbox.bind('<Button-1>', lambda event: teamviewer_chckbx_changed())
 # endregion
 
 # region Python
@@ -403,11 +333,11 @@ python_photo = ImageTk.PhotoImage(python_image)
 
 # Display image
 python_image_label = tk.Label(root, image=python_photo)
-python_image_label.grid(row=14, column=0, padx=2, pady=2)
+python_image_label.grid(row=10, column=0)
 
 # Checkbox
 python_checkbox = Checkbutton(root, text="Python")
-python_checkbox.grid(row=14, column=1, padx=2, pady=2, sticky="w")
+python_checkbox.grid(row=10, column=1, sticky="w")
 python_checkbox.bind('<Button-1>', lambda event: python_chckbx_changed())
 # endregion
 
@@ -418,21 +348,113 @@ dotnet_photo = ImageTk.PhotoImage(dotnet_image)
 
 # Display image
 dotnet_image_label = tk.Label(root, image=dotnet_photo)
-dotnet_image_label.grid(row=15, column=0, padx=2, pady=2)
+dotnet_image_label.grid(row=10, column=2)
 
 # Checkbox
 dotnet_checkbox = Checkbutton(root, text=".Net")
-dotnet_checkbox.grid(row=15, column=1, padx=2, pady=2, sticky="w")
+dotnet_checkbox.grid(row=10, column=3, sticky="w")
 dotnet_checkbox.bind('<Button-1>', lambda event: dotnet_chckbx_changed())
 # endregion
 
-# Install button
-install_bttn = tk.Button(root, text="Install", command=install_bttn_click)
-install_bttn.grid(row=16, column=0, padx=2, pady=2)
+# region Java
+java_image = Image.open(".\\Resources\\java.png")
+java_image = java_image.resize((20, 20))
+java_photo = ImageTk.PhotoImage(java_image)
 
+# Display image
+java_image_label = tk.Label(root, image=java_photo)
+java_image_label.grid(row=11, column=0)
+
+# Checkbox
+java_checkbox = Checkbutton(root, text="Java")
+java_checkbox.grid(row=11, column=1, sticky="w")
+java_checkbox.bind('<Button-1>', lambda event: java_chckbx_changed())
+# endregion
+
+# region WinRar
+winrar_image = Image.open(".\\Resources\\winrar.png")
+winrar_image = winrar_image.resize((20, 20))
+winrar_photo = ImageTk.PhotoImage(winrar_image)
+
+# Display image
+winrar_image_label = tk.Label(root, image=winrar_photo)
+winrar_image_label.grid(row=13, column=0)
+
+# Checkbox
+winrar_checkbox = Checkbutton(root, text="WinRar")
+winrar_checkbox.grid(row=13, column=1, sticky="w")
+winrar_checkbox.bind('<Button-1>', lambda event: winrar_chckbx_changed())
+# endregion
+
+# region Daemon Tools
+daemon_image = Image.open(".\\Resources\\daemon-tools.png")
+daemon_image = daemon_image.resize((20, 20))
+daemon_photo = ImageTk.PhotoImage(daemon_image)
+
+# Display image
+daemon_image_label = tk.Label(root, image=daemon_photo)
+daemon_image_label.grid(row=13, column=2)
+
+# Checkbox
+daemon_checkbox = Checkbutton(root, text="Daemon ToolsXXXX")
+daemon_checkbox.grid(row=13, column=3, sticky="w")
+daemon_checkbox.bind('<Button-1>', lambda event: daemon_chckbx_changed())
+# endregion
+
+# region qBittorent
+qbit_image = Image.open(".\\Resources\\qbittorrent.png")
+qbit_image = qbit_image.resize((20, 20))
+qbit_photo = ImageTk.PhotoImage(qbit_image)
+
+# Display image
+qbit_image_label = tk.Label(root, image=qbit_photo)
+qbit_image_label.grid(row=14, column=0)
+
+# Checkbox
+qbit_checkbox = Checkbutton(root, text="qBittorrtent")
+qbit_checkbox.grid(row=14, column=1, sticky="w")
+qbit_checkbox.bind('<Button-1>', lambda event: qbit_chckbx_changed())
+# endregion
+
+# region Steam
+steam_image = Image.open(".\\Resources\\steam.png")
+steam_image = steam_image.resize((20, 20))
+steam_photo = ImageTk.PhotoImage(steam_image)
+
+# Display image
+steam_image_label = tk.Label(root, image=steam_photo)
+steam_image_label.grid(row=14, column=2)
+
+# Checkbox
+steam_checkbox = Checkbutton(root, text="Steam")
+steam_checkbox.grid(row=14, column=3, sticky="w")
+steam_checkbox.bind('<Button-1>', lambda event: steam_chckbx_changed())
+# endregion
+
+# region TeamViewer
+teamviewer_image = Image.open(".\\Resources\\teamviewer.png")
+teamviewer_image = teamviewer_image.resize((20, 20))
+teamviewer_photo = ImageTk.PhotoImage(teamviewer_image)
+
+# Display image
+teamviewer_image_label = tk.Label(root, image=teamviewer_photo)
+teamviewer_image_label.grid(row=15, column=0)
+
+# Checkbox
+teamviewer_checkbox = Checkbutton(root, text="TeamViewer")
+teamviewer_checkbox.grid(row=15, column=1, sticky="w")
+teamviewer_checkbox.bind('<Button-1>', lambda event: teamviewer_chckbx_changed())
+# endregion
+
+# region Buttons
 # Download button
-download_bttn = tk.Button(root, text="Download", command=download_bttn_click)
-download_bttn.grid(row=16, column=1, padx=2, pady=2)
+download_bttn = tk.Button(root, text="Download", width=25, command=download_bttn_click)
+download_bttn.grid(row=16, column=0, columnspan=2, sticky="ew", pady=(20, 0))
+
+# Install button
+install_bttn = tk.Button(root, text="Install", width=25, command=install_bttn_click)
+install_bttn.grid(row=16, column=2, columnspan=2, sticky="ew", pady=(20, 0))
+# endregion
 
 # Main
 if __name__ == '__main__':
