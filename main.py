@@ -165,6 +165,20 @@ def teamviewer_chckbx_changed():
         programs_to_install.append(programs.teamviewer)
     else:
         programs_to_install.remove(programs.teamviewer)
+
+
+def python_chckbx_changed():
+    if not programs_to_install.__contains__(programs.python):
+        programs_to_install.append(programs.python)
+    else:
+        programs_to_install.remove(programs.python)
+
+
+def dotnet_chckbx_changed():
+    if not programs_to_install.__contains__(programs.dotnet):
+        programs_to_install.append(programs.dotnet)
+    else:
+        programs_to_install.remove(programs.dotnet)
 # endregion
 
 
@@ -382,13 +396,43 @@ teamviewer_checkbox.grid(row=13, column=1, padx=2, pady=2, sticky="w")
 teamviewer_checkbox.bind('<Button-1>', lambda event: teamviewer_chckbx_changed())
 # endregion
 
+# region Python
+python_image = Image.open(".\\Resources\\python.png")
+python_image = python_image.resize((20, 20))
+python_photo = ImageTk.PhotoImage(python_image)
+
+# Display image
+python_image_label = tk.Label(root, image=python_photo)
+python_image_label.grid(row=14, column=0, padx=2, pady=2)
+
+# Checkbox
+python_checkbox = Checkbutton(root, text="Python")
+python_checkbox.grid(row=14, column=1, padx=2, pady=2, sticky="w")
+python_checkbox.bind('<Button-1>', lambda event: python_chckbx_changed())
+# endregion
+
+# region DotNet
+dotnet_image = Image.open(".\\Resources\\dotnet.png")
+dotnet_image = dotnet_image.resize((20, 20))
+dotnet_photo = ImageTk.PhotoImage(dotnet_image)
+
+# Display image
+dotnet_image_label = tk.Label(root, image=dotnet_photo)
+dotnet_image_label.grid(row=15, column=0, padx=2, pady=2)
+
+# Checkbox
+dotnet_checkbox = Checkbutton(root, text=".Net")
+dotnet_checkbox.grid(row=15, column=1, padx=2, pady=2, sticky="w")
+dotnet_checkbox.bind('<Button-1>', lambda event: dotnet_chckbx_changed())
+# endregion
+
 # Install button
 install_bttn = tk.Button(root, text="Install", command=install_bttn_click)
-install_bttn.grid(row=14, column=0, padx=2, pady=2)
+install_bttn.grid(row=16, column=0, padx=2, pady=2)
 
 # Download button
 download_bttn = tk.Button(root, text="Download", command=download_bttn_click)
-download_bttn.grid(row=14, column=1, padx=2, pady=2)
+download_bttn.grid(row=16, column=1, padx=2, pady=2)
 
 # Main
 if __name__ == '__main__':

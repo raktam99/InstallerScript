@@ -17,7 +17,7 @@ chrome = App("Chrome",
 
 opera = App("Opera",
             "https://net.geo.opera.com/opera_gx/stable/windows?utm_tryagain=yes&utm_source=google&utm_medium=ose&utm_campaign=(none)&http_referrer=https%3A%2F%2Fwww.google.com%2F&utm_site=opera_com&",
-            ["/silent", "/allusers=1", "/setdefaultbrowser=0", "/pintotaskbar=0", "/launchbrowser=0"])
+            ["/silent", "/launchbrowser=0"])
 
 iobit_uninstaller = App("Iobit_Uninstaller",
                         "https://cdn.iobit.com/dl/iobituninstaller.exe",
@@ -62,3 +62,11 @@ steam = App("Steam",
 teamviewer = App("TeamViewer",
                  "https://download.teamviewer.com/download/TeamViewer_Setup_x64.exe?utm_source=google&utm_medium=cpc&utm_campaign=restofeurope%7Cb%7Cpr%7C22%7Caug%7Ctv-core-download-sn%7Cnew%7Ct0%7C0&utm_content=Download&utm_term=teamviewer+download",
                  ["/S"])
+
+python = App("Python",
+             "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
+             ["/quiet"])
+
+dotnet = App("DotNet",
+             "https://download.visualstudio.microsoft.com/download/pr/1c8737a4-8cf1-4251-af5f-4a9c119a2489/c42c16d1f664719564353489c2b9b8d8/dotnet-sdk-7.0.401-win-x64.exe",
+             ["/q", "/norestart"])
