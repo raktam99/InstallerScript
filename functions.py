@@ -38,7 +38,7 @@ def install_bttn_click():
 # Downloader function
 def download_app(application):
     print(f"{application.name}...")
-    path = f"{programs.installer_path}\\{application.name}Setup.exe"
+    path = f"{programs.installer_path}\\{application.name} Setup.exe"
 
     if not os.path.isfile(path):
         try:
@@ -58,7 +58,7 @@ def download_app(application):
 # Installer function
 def install_app(application):
     print(f"{application.name}...")
-    path = f"{programs.installer_path}\\{application.name}Setup.exe"
+    path = f"{programs.installer_path}\\{application.name} Setup.exe"
     cmd = [path] + application.flags
     if not programs.installed_programs.__contains__(application):
         try:

@@ -44,10 +44,11 @@ def winrar_chckbx_changed():
 
 
 def daemon_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.daemon_tools):
-        programs.programs_to_install.append(programs.daemon_tools)
-    else:
-        programs.programs_to_install.remove(programs.daemon_tools)
+    print("Currently not working:(")
+    #if not programs.programs_to_install.__contains__(programs.daemon_tools):
+        #programs.programs_to_install.append(programs.daemon_tools)
+    #else:
+        #programs.programs_to_install.remove(programs.daemon_tools)
 
 
 def qbit_chckbx_changed():
@@ -104,3 +105,17 @@ def dotnet_chckbx_changed():
         programs.programs_to_install.append(programs.dotnet)
     else:
         programs.programs_to_install.remove(programs.dotnet)
+
+
+def notepad_chckbx_changed():
+    if not programs.programs_to_install.__contains__(programs.notepad):
+        programs.programs_to_install.append(programs.notepad)
+    else:
+        programs.programs_to_install.remove(programs.notepad)
+
+
+def vscode_chckbx_changed():
+    if not programs.programs_to_install.__contains__(programs.vscode):
+        programs.programs_to_install.append(programs.vscode)
+    else:
+        programs.programs_to_install.remove(programs.vscode)
