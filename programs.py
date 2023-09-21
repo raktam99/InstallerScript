@@ -1,6 +1,8 @@
 import os
 
 installer_path = f"{os.path.expanduser('~')}\\Downloads\\Downloaded Installers"
+programs_to_install = []
+installed_programs = []
 
 
 # Class for apps

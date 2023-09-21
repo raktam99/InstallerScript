@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import requests
 import subprocess
 import programs
+import box_handlers as bh
 
 
 # Install click handler function
@@ -13,9 +14,9 @@ def download_bttn_click():
         os.mkdir(programs.installer_path)
     print("Created directory where installers will be stored!")
 
-    if not len(programs_to_install) == 0:
+    if not len(programs.programs_to_install) == 0:
         print("Downloading Programs...")
-        for program in programs_to_install:
+        for program in programs.programs_to_install:
             download_app(program)
 
         print("Downloaded everything!")
@@ -25,12 +26,12 @@ def download_bttn_click():
 
 # Install click handler function
 def install_bttn_click():
-    if not len(programs_to_install) == 0:
+    if not len(programs.programs_to_install) == 0:
         print("Installing programs...")
 
-        for program in programs_to_install:
+        for program in programs.programs_to_install:
             install_app(program)
-            installed_programs.append(program)
+            programs.installed_programs.append(program)
 
         print("Everything is installed!")
     else:
@@ -62,7 +63,7 @@ def install_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name}Setup.exe"
     cmd = [path] + application.flags
-    if not installed_programs.__contains__(application):
+    if not programs.installed_programs.__contains__(application):
         try:
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
             p.wait()
@@ -74,119 +75,6 @@ def install_app(application):
     else:
         print("Already installed!")
 
-
-# region Box handlers
-def chrome_chckbx_changed():
-    if not programs_to_install.__contains__(programs.chrome):
-        programs_to_install.append(programs.chrome)
-    else:
-        programs_to_install.remove(programs.chrome)
-
-
-def opera_chckbx_changed():
-    if not programs_to_install.__contains__(programs.opera):
-        programs_to_install.append(programs.opera)
-    else:
-        programs_to_install.remove(programs.opera)
-
-
-def iobitu_chckbx_changed():
-    if not programs_to_install.__contains__(programs.iobit_uninstaller):
-        programs_to_install.append(programs.iobit_uninstaller)
-    else:
-        programs_to_install.remove(programs.iobit_uninstaller)
-
-
-def asystemcare_chckbx_changed():
-    if not programs_to_install.__contains__(programs.advanced_systemcare):
-        programs_to_install.append(programs.advanced_systemcare)
-    else:
-        programs_to_install.remove(programs.advanced_systemcare)
-
-
-def avast_chckbx_changed():
-    if not programs_to_install.__contains__(programs.avast):
-        programs_to_install.append(programs.avast)
-    else:
-        programs_to_install.remove(programs.avast)
-
-
-def winrar_chckbx_changed():
-    if not programs_to_install.__contains__(programs.winrar):
-        programs_to_install.append(programs.winrar)
-    else:
-        programs_to_install.remove(programs.winrar)
-
-
-def daemon_chckbx_changed():
-    if not programs_to_install.__contains__(programs.daemon_tools):
-        programs_to_install.append(programs.daemon_tools)
-    else:
-        programs_to_install.remove(programs.daemon_tools)
-
-
-def qbit_chckbx_changed():
-    if not programs_to_install.__contains__(programs.qbittorrent):
-        programs_to_install.append(programs.qbittorrent)
-    else:
-        programs_to_install.remove(programs.qbittorrent)
-
-
-def java_chckbx_changed():
-    if not programs_to_install.__contains__(programs.java):
-        programs_to_install.append(programs.java)
-    else:
-        programs_to_install.remove(programs.java)
-
-
-def teams_chckbx_changed():
-    if not programs_to_install.__contains__(programs.teams):
-        programs_to_install.append(programs.teams)
-    else:
-        programs_to_install.remove(programs.teams)
-
-
-def dc_chckbx_changed():
-    if not programs_to_install.__contains__(programs.discord):
-        programs_to_install.append(programs.discord)
-    else:
-        programs_to_install.remove(programs.discord)
-
-
-def steam_chckbx_changed():
-    if not programs_to_install.__contains__(programs.steam):
-        programs_to_install.append(programs.steam)
-    else:
-        programs_to_install.remove(programs.steam)
-
-
-def teamviewer_chckbx_changed():
-    if not programs_to_install.__contains__(programs.teamviewer):
-        programs_to_install.append(programs.teamviewer)
-    else:
-        programs_to_install.remove(programs.teamviewer)
-
-
-def python_chckbx_changed():
-    if not programs_to_install.__contains__(programs.python):
-        programs_to_install.append(programs.python)
-    else:
-        programs_to_install.remove(programs.python)
-
-
-def dotnet_chckbx_changed():
-    if not programs_to_install.__contains__(programs.dotnet):
-        programs_to_install.append(programs.dotnet)
-    else:
-        programs_to_install.remove(programs.dotnet)
-
-# endregion
-
-
-# Variables
-programs_to_install = []
-installed_programs = []
-installed = False
 
 # Main app window
 root = tk.Tk()
@@ -229,7 +117,7 @@ avast_image_label.grid(row=2, column=0)
 # Checkbox
 avast_checkbox = Checkbutton(root, text="Avast")
 avast_checkbox.grid(row=2, column=1, sticky="w")
-avast_checkbox.bind('<Button-1>', lambda event: avast_chckbx_changed())
+avast_checkbox.bind('<Button-1>', lambda event: bh.avast_chckbx_changed())
 # endregion
 
 # region Chrome
@@ -245,7 +133,7 @@ chrome_image_label.grid(row=4, column=0)
 # Checkbox
 chrome_checkbox = Checkbutton(root, text="Google Chrome")
 chrome_checkbox.grid(row=4, column=1, sticky="w")
-chrome_checkbox.bind('<Button-1>', lambda event: chrome_chckbx_changed())
+chrome_checkbox.bind('<Button-1>', lambda event: bh.chrome_chckbx_changed())
 # endregion
 
 # region Opera
@@ -261,7 +149,7 @@ opera_image_label.grid(row=4, column=2)
 # Checkbox
 opera_checkbox = Checkbutton(root, text="Opera")
 opera_checkbox.grid(row=4, column=3, sticky="w")
-opera_checkbox.bind('<Button-1>', lambda event: opera_chckbx_changed())
+opera_checkbox.bind('<Button-1>', lambda event: bh.opera_chckbx_changed())
 # endregion
 
 # region Iobit Uninstaller
@@ -277,7 +165,7 @@ iobitu_image_label.grid(row=6, column=0)
 # Checkbox
 iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller")
 iobitu_checkbox.grid(row=6, column=1, sticky="w")
-iobitu_checkbox.bind('<Button-1>', lambda event: iobitu_chckbx_changed())
+iobitu_checkbox.bind('<Button-1>', lambda event: bh.iobitu_chckbx_changed())
 # endregion
 
 # region Advanced Systemcare
@@ -293,7 +181,7 @@ asystemcare_image_label.grid(row=6, column=2)
 # Checkbox
 asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare")
 asystemcare_checkbox.grid(row=6, column=3, sticky="w")
-asystemcare_checkbox.bind('<Button-1>', lambda event: asystemcare_chckbx_changed())
+asystemcare_checkbox.bind('<Button-1>', lambda event: bh.asystemcare_chckbx_changed())
 # endregion
 
 # region Teams
@@ -308,7 +196,7 @@ teams_image_label.grid(row=8, column=0)
 # Checkbox
 teams_checkbox = Checkbutton(root, text="Teams")
 teams_checkbox.grid(row=8, column=1, sticky="w")
-teams_checkbox.bind('<Button-1>', lambda event: teams_chckbx_changed())
+teams_checkbox.bind('<Button-1>', lambda event: bh.teams_chckbx_changed())
 # endregion
 
 # region Discord
@@ -323,7 +211,7 @@ dc_image_label.grid(row=8, column=2)
 # Checkbox
 dc_checkbox = Checkbutton(root, text="Discord")
 dc_checkbox.grid(row=8, column=3, sticky="w")
-dc_checkbox.bind('<Button-1>', lambda event: dc_chckbx_changed())
+dc_checkbox.bind('<Button-1>', lambda event: bh.dc_chckbx_changed())
 # endregion
 
 # region Python
@@ -338,7 +226,7 @@ python_image_label.grid(row=10, column=0)
 # Checkbox
 python_checkbox = Checkbutton(root, text="Python")
 python_checkbox.grid(row=10, column=1, sticky="w")
-python_checkbox.bind('<Button-1>', lambda event: python_chckbx_changed())
+python_checkbox.bind('<Button-1>', lambda event: bh.python_chckbx_changed())
 # endregion
 
 # region DotNet
@@ -353,7 +241,7 @@ dotnet_image_label.grid(row=10, column=2)
 # Checkbox
 dotnet_checkbox = Checkbutton(root, text=".Net")
 dotnet_checkbox.grid(row=10, column=3, sticky="w")
-dotnet_checkbox.bind('<Button-1>', lambda event: dotnet_chckbx_changed())
+dotnet_checkbox.bind('<Button-1>', lambda event: bh.dotnet_chckbx_changed())
 # endregion
 
 # region Java
@@ -368,7 +256,7 @@ java_image_label.grid(row=11, column=0)
 # Checkbox
 java_checkbox = Checkbutton(root, text="Java")
 java_checkbox.grid(row=11, column=1, sticky="w")
-java_checkbox.bind('<Button-1>', lambda event: java_chckbx_changed())
+java_checkbox.bind('<Button-1>', lambda event: bh.java_chckbx_changed())
 # endregion
 
 # region WinRar
@@ -383,7 +271,7 @@ winrar_image_label.grid(row=13, column=0)
 # Checkbox
 winrar_checkbox = Checkbutton(root, text="WinRar")
 winrar_checkbox.grid(row=13, column=1, sticky="w")
-winrar_checkbox.bind('<Button-1>', lambda event: winrar_chckbx_changed())
+winrar_checkbox.bind('<Button-1>', lambda event: bh.winrar_chckbx_changed())
 # endregion
 
 # region Daemon Tools
@@ -398,7 +286,7 @@ daemon_image_label.grid(row=13, column=2)
 # Checkbox
 daemon_checkbox = Checkbutton(root, text="Daemon ToolsXXXX")
 daemon_checkbox.grid(row=13, column=3, sticky="w")
-daemon_checkbox.bind('<Button-1>', lambda event: daemon_chckbx_changed())
+daemon_checkbox.bind('<Button-1>', lambda event: bh.daemon_chckbx_changed())
 # endregion
 
 # region qBittorent
@@ -413,7 +301,7 @@ qbit_image_label.grid(row=14, column=0)
 # Checkbox
 qbit_checkbox = Checkbutton(root, text="qBittorrtent")
 qbit_checkbox.grid(row=14, column=1, sticky="w")
-qbit_checkbox.bind('<Button-1>', lambda event: qbit_chckbx_changed())
+qbit_checkbox.bind('<Button-1>', lambda event: bh.qbit_chckbx_changed())
 # endregion
 
 # region Steam
@@ -428,7 +316,7 @@ steam_image_label.grid(row=14, column=2)
 # Checkbox
 steam_checkbox = Checkbutton(root, text="Steam")
 steam_checkbox.grid(row=14, column=3, sticky="w")
-steam_checkbox.bind('<Button-1>', lambda event: steam_chckbx_changed())
+steam_checkbox.bind('<Button-1>', lambda event: bh.steam_chckbx_changed())
 # endregion
 
 # region TeamViewer
@@ -443,7 +331,7 @@ teamviewer_image_label.grid(row=15, column=0)
 # Checkbox
 teamviewer_checkbox = Checkbutton(root, text="TeamViewer")
 teamviewer_checkbox.grid(row=15, column=1, sticky="w")
-teamviewer_checkbox.bind('<Button-1>', lambda event: teamviewer_chckbx_changed())
+teamviewer_checkbox.bind('<Button-1>', lambda event: bh.teamviewer_chckbx_changed())
 # endregion
 
 # region Buttons
