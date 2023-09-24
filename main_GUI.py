@@ -258,7 +258,7 @@ qbit_image_label = tk.Label(root, image=qbit_photo)
 qbit_image_label.grid(row=15, column=0)
 
 # Checkbox
-qbit_checkbox = Checkbutton(root, text="qBittorrtent")
+qbit_checkbox = Checkbutton(root, text="qBittorrtentXXXX")
 qbit_checkbox.grid(row=15, column=1, sticky="w")
 qbit_checkbox.bind('<Button-1>', lambda event: bh.qbit_chckbx_changed())
 # endregion

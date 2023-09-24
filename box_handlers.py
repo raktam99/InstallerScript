@@ -52,10 +52,11 @@ def daemon_chckbx_changed():
 
 
 def qbit_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.qbittorrent):
-        programs.programs_to_install.append(programs.qbittorrent)
-    else:
-        programs.programs_to_install.remove(programs.qbittorrent)
+    print("Currently not working:(")
+    #if not programs.programs_to_install.__contains__(programs.qbittorrent):
+        #programs.programs_to_install.append(programs.qbittorrent)
+    #else:
+        #programs.programs_to_install.remove(programs.qbittorrent)
 
 
 def java_chckbx_changed():
