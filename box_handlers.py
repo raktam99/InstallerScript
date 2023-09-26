@@ -45,18 +45,18 @@ def winrar_chckbx_changed():
 
 def daemon_chckbx_changed():
     print("Currently not working:(")
-    #if not programs.programs_to_install.__contains__(programs.daemon_tools):
-        #programs.programs_to_install.append(programs.daemon_tools)
-    #else:
-        #programs.programs_to_install.remove(programs.daemon_tools)
+    if not programs.programs_to_install.__contains__(programs.daemon_tools):
+        programs.programs_to_install.append(programs.daemon_tools)
+    else:
+        programs.programs_to_install.remove(programs.daemon_tools)
 
 
 def qbit_chckbx_changed():
     print("Currently not working:(")
-    #if not programs.programs_to_install.__contains__(programs.qbittorrent):
-        #programs.programs_to_install.append(programs.qbittorrent)
-    #else:
-        #programs.programs_to_install.remove(programs.qbittorrent)
+    if not programs.programs_to_install.__contains__(programs.qbittorrent):
+        programs.programs_to_install.append(programs.qbittorrent)
+    else:
+        programs.programs_to_install.remove(programs.qbittorrent)
 
 
 def java_chckbx_changed():

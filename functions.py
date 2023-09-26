@@ -69,5 +69,7 @@ def install_app(application):
             print(f"Error installing {application.name}: {e}")
         except FileNotFoundError:
             print(f"Installer not found at path: {path}")
+        except OSError:
+            print(f"Error running installer file: {path}")
     else:
         print("Already installed!")

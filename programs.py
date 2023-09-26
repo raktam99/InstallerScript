@@ -42,7 +42,7 @@ daemon_tools = App("Daemon Tools",
                    ["/S"])
 
 qbittorrent = App("qBittorrent",
-                  "https://download.fosshub.com/Protected/expiretime=1695360299;badurl=aHR0cHM6Ly93d3cuZm9zc2h1Yi5jb20vcUJpdHRvcnJlbnQuaHRtbA==/3e0261725cbe8153b731ab93fec702c4c2edfa6c931c60e73afc2a4cdf751dd8/5b8793a7f9ee5a5c3e97a3b2/64ee7adf2be6f897089e8299/qbittorrent_4.5.5_x64_setup.exe",
+                  "https://www.fosshub.com/qBittorrent.html?dwl=qbittorrent_4.5.5_x64_setup.exe",
                   ["/S"])
 
 java = App("Java",

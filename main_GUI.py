@@ -10,6 +10,7 @@ root = tk.Tk()
 root.title("Installer")
 root.resizable(False, False)
 
+
 # region Labels
 choose_label = tk.Label(root, text="Please choose")
 choose_label.grid(row=0, column=0, columnspan=4)
@@ -33,6 +34,7 @@ other_label = tk.Label(root, text="Other:")
 other_label.grid(row=13, column=0, columnspan=2, sticky="w", pady=(5, 0))
 # endregion
 
+
 # region Avast
 # Load image
 avast_image = Image.open(".\\Resources\\avast.png")
@@ -48,6 +50,7 @@ avast_checkbox = Checkbutton(root, text="Avast")
 avast_checkbox.grid(row=2, column=1, sticky="w")
 avast_checkbox.bind('<Button-1>', lambda event: bh.avast_chckbx_changed())
 # endregion
+
 
 # region Chrome
 # Load image
@@ -65,6 +68,7 @@ chrome_checkbox.grid(row=4, column=1, sticky="w")
 chrome_checkbox.bind('<Button-1>', lambda event: bh.chrome_chckbx_changed())
 # endregion
 
+
 # region Opera
 # Load image
 opera_image = Image.open(".\\Resources\\opera.png")
@@ -80,6 +84,7 @@ opera_checkbox = Checkbutton(root, text="Opera")
 opera_checkbox.grid(row=4, column=3, sticky="w")
 opera_checkbox.bind('<Button-1>', lambda event: bh.opera_chckbx_changed())
 # endregion
+
 
 # region Iobit Uninstaller
 # Load image
@@ -97,6 +102,7 @@ iobitu_checkbox.grid(row=6, column=1, sticky="w")
 iobitu_checkbox.bind('<Button-1>', lambda event: bh.iobitu_chckbx_changed())
 # endregion
 
+
 # region Advanced Systemcare
 # Load image
 asystemcare_image = Image.open(".\\Resources\\advenced-systemcare.png")
@@ -113,6 +119,7 @@ asystemcare_checkbox.grid(row=6, column=3, sticky="w")
 asystemcare_checkbox.bind('<Button-1>', lambda event: bh.asystemcare_chckbx_changed())
 # endregion
 
+
 # region Teams
 teams_image = Image.open(".\\Resources\\teams.png")
 teams_image = teams_image.resize((20, 20))
@@ -127,6 +134,7 @@ teams_checkbox = Checkbutton(root, text="Teams")
 teams_checkbox.grid(row=8, column=1, sticky="w")
 teams_checkbox.bind('<Button-1>', lambda event: bh.teams_chckbx_changed())
 # endregion
+
 
 # region Discord
 dc_image = Image.open(".\\Resources\\discord.png")
@@ -143,6 +151,7 @@ dc_checkbox.grid(row=8, column=3, sticky="w")
 dc_checkbox.bind('<Button-1>', lambda event: bh.dc_chckbx_changed())
 # endregion
 
+
 # region Python
 python_image = Image.open(".\\Resources\\python.png")
 python_image = python_image.resize((20, 20))
@@ -157,6 +166,7 @@ python_checkbox = Checkbutton(root, text="Python")
 python_checkbox.grid(row=10, column=1, sticky="w")
 python_checkbox.bind('<Button-1>', lambda event: bh.python_chckbx_changed())
 # endregion
+
 
 # region DotNet
 dotnet_image = Image.open(".\\Resources\\dotnet.png")
@@ -173,6 +183,7 @@ dotnet_checkbox.grid(row=10, column=3, sticky="w")
 dotnet_checkbox.bind('<Button-1>', lambda event: bh.dotnet_chckbx_changed())
 # endregion
 
+
 # region Java
 java_image = Image.open(".\\Resources\\java.png")
 java_image = java_image.resize((20, 20))
@@ -187,6 +198,7 @@ java_checkbox = Checkbutton(root, text="Java")
 java_checkbox.grid(row=11, column=1, sticky="w")
 java_checkbox.bind('<Button-1>', lambda event: bh.java_chckbx_changed())
 # endregion
+
 
 # region Notepad++
 notepad_image = Image.open(".\\Resources\\notepad.png")
@@ -203,6 +215,7 @@ notepad_checkbox.grid(row=11, column=3, sticky="w")
 notepad_checkbox.bind('<Button-1>', lambda event: bh.notepad_chckbx_changed())
 # endregion
 
+
 # region VS Code
 vscode_image = Image.open(".\\Resources\\vscode.png")
 vscode_image = vscode_image.resize((20, 20))
@@ -217,6 +230,7 @@ vscode_checkbox = Checkbutton(root, text="VS Code")
 vscode_checkbox.grid(row=12, column=1, sticky="w")
 notepad_checkbox.bind('<Button-1>', lambda event: bh.vscode_chckbx_changed())
 # endregion
+
 
 # region WinRar
 winrar_image = Image.open(".\\Resources\\winrar.png")
@@ -233,6 +247,7 @@ winrar_checkbox.grid(row=14, column=1, sticky="w")
 winrar_checkbox.bind('<Button-1>', lambda event: bh.winrar_chckbx_changed())
 # endregion
 
+
 # region Daemon Tools
 daemon_image = Image.open(".\\Resources\\daemon-tools.png")
 daemon_image = daemon_image.resize((20, 20))
@@ -247,6 +262,7 @@ daemon_checkbox = Checkbutton(root, text="Daemon ToolsXXXX")
 daemon_checkbox.grid(row=14, column=3, sticky="w")
 daemon_checkbox.bind('<Button-1>', lambda event: bh.daemon_chckbx_changed())
 # endregion
+
 
 # region qBittorent
 qbit_image = Image.open(".\\Resources\\qbittorrent.png")
@@ -263,6 +279,7 @@ qbit_checkbox.grid(row=15, column=1, sticky="w")
 qbit_checkbox.bind('<Button-1>', lambda event: bh.qbit_chckbx_changed())
 # endregion
 
+
 # region Steam
 steam_image = Image.open(".\\Resources\\steam.png")
 steam_image = steam_image.resize((20, 20))
@@ -277,6 +294,7 @@ steam_checkbox = Checkbutton(root, text="Steam")
 steam_checkbox.grid(row=15, column=3, sticky="w")
 steam_checkbox.bind('<Button-1>', lambda event: bh.steam_chckbx_changed())
 # endregion
+
 
 # region TeamViewer
 teamviewer_image = Image.open(".\\Resources\\teamviewer.png")
@@ -293,6 +311,7 @@ teamviewer_checkbox.grid(row=16, column=1, sticky="w")
 teamviewer_checkbox.bind('<Button-1>', lambda event: bh.teamviewer_chckbx_changed())
 # endregion
 
+
 # region Buttons
 # Download button
 download_bttn = tk.Button(root, text="Download", width=25, command=f.download_bttn_click)
@@ -302,6 +321,7 @@ download_bttn.grid(row=17, column=0, columnspan=2, sticky="ew", pady=(20, 0))
 install_bttn = tk.Button(root, text="Install", width=25, command=f.install_bttn_click)
 install_bttn.grid(row=17, column=2, columnspan=2, sticky="ew", pady=(20, 0))
 # endregion
+
 
 # Main
 if __name__ == '__main__':
