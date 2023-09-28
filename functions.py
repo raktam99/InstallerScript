@@ -18,7 +18,7 @@ def download_bttn_click():
 
         print("Downloaded everything!")
     else:
-        print("Nothing is selected")
+        print("Nothing is selected!")
 
 
 # Install click handler function
@@ -33,6 +33,11 @@ def install_bttn_click():
         print("Everything is installed!")
     else:
         print("Nothing to install!")
+
+
+def auto_bttn_click():
+    download_bttn_click()
+    install_bttn_click()
 
 
 # Downloader function
@@ -52,7 +57,7 @@ def download_app(application):
         except Exception as e:
             print(f"Error: {str(e)}")
     else:
-        print("Already downloaded!")
+        print(f"Installer of {application.name} is already downloaded!")
 
 
 # Installer function
@@ -72,4 +77,4 @@ def install_app(application):
         except OSError:
             print(f"Error running installer file: {path}")
     else:
-        print("Already installed!")
+        print(f"{application.name} is already installed!")

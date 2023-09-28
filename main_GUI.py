@@ -3,6 +3,19 @@ from tkinter import Checkbutton
 from PIL import Image, ImageTk
 import box_handlers as bh
 import functions as f
+import programs
+from tkinter import filedialog
+
+
+def change_path_bttn_click():
+    folder_path = filedialog.askdirectory()
+    if folder_path:
+        programs.installer_path = folder_path
+        download_txtbx_text.set(programs.installer_path)
+
+
+def on_dowlnoad_txtbx_scrollbar_move(*args):
+    download_txtbx.xview(*args)
 
 
 # Main app window
@@ -32,6 +45,9 @@ developer_label.grid(row=9, column=0, columnspan=2, sticky="w", pady=(5, 0))
 
 other_label = tk.Label(root, text="Other:")
 other_label.grid(row=13, column=0, columnspan=2, sticky="w", pady=(5, 0))
+
+download_path_label = tk.Label(root, text="Folder, where installers will be downloaded:")
+download_path_label.grid(row=17, column=0, columnspan=3, sticky="w", pady=(20, 0))
 # endregion
 
 
@@ -312,14 +328,33 @@ teamviewer_checkbox.bind('<Button-1>', lambda event: bh.teamviewer_chckbx_change
 # endregion
 
 
+# region Textbox
+download_txtbx_scrollbar = tk.Scrollbar(root, orient="horizontal")
+download_txtbx_scrollbar.grid(row=19, column=0, columnspan=4, sticky="ew")
+download_txtbx_scrollbar.config(command=on_dowlnoad_txtbx_scrollbar_move)
+
+download_txtbx_text = tk.StringVar()
+download_txtbx_text.set(programs.installer_path)
+download_txtbx = tk.Entry(root, textvariable=download_txtbx_text, state="readonly", xscrollcommand=download_txtbx_scrollbar.set)
+download_txtbx.grid(row=18, column=0, columnspan=4, sticky="ew")
+# endregion
+
+
 # region Buttons
+change_path_bttn = tk.Button(root, text="Change download path", command=change_path_bttn_click)
+change_path_bttn.grid(row=20, column=0, columnspan=4, sticky="ew")
+
 # Download button
 download_bttn = tk.Button(root, text="Download", width=25, command=f.download_bttn_click)
-download_bttn.grid(row=17, column=0, columnspan=2, sticky="ew", pady=(20, 0))
+download_bttn.grid(row=21, column=0, columnspan=2, sticky="ew", pady=(20, 0))
 
 # Install button
 install_bttn = tk.Button(root, text="Install", width=25, command=f.install_bttn_click)
-install_bttn.grid(row=17, column=2, columnspan=2, sticky="ew", pady=(20, 0))
+install_bttn.grid(row=21, column=2, columnspan=2, sticky="ew", pady=(20, 0))
+
+# Download & Install button
+auto_bttn = tk.Button(root, text="Download & Install", command=f.auto_bttn_click)
+auto_bttn.grid(row=22, column=0, columnspan=4, sticky="ew")
 # endregion
 
 
