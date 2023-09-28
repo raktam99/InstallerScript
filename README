@@ -1,0 +1,64 @@
+main_GUI.py:
+    Itt található a program belépési pontja, illetve ez a modul felelős a GUI-ért
+
+    Felhasznált modulok:
+        tkinter : GUI megvalósításához használt modul
+            +filedialog: Mappaválasztáshoz használt párbeszédablak használatához
+        pillow (PIL): Képek kezeléséhez használt modul
+        box_handlers (saját modul)
+        functions (saját modul)
+        programs (saját modul)
+
+    Változók:
+        root: a fő ablak
+        kép változók
+        label változók
+        checkbutton változók
+        button változók
+        egy entry változó
+        egy scrollbar változó
+        egy stringvar változó
+
+    Függvények:
+        change_path_bttn_click: A letöltési könyvtár megváltoztatására használt gomb eseménykezelő függvénye
+        on_dowlnoad_txtbx_scrollbar_move: A letöltési mappa útvonalát megjelenítő entry-hez tartozó gördítő
+            eseménykezelője
+
+programs.py:
+    Ebben a modulban tároljuk a programok letöltéséhez és telepítéséhez használt fontos információkat
+
+    Felhasznált modulok:
+        os: Az operációs rendszerrel való interakciókhoz használatos modul
+
+    Osztályok:
+        App: A letöltendő programok objektumként való megvalósítása
+        Adattagok:
+            name: A program neve
+            url: A program letöltési linkje
+            flags[]: A telepítéshez szükséges parancssori kapcsolókat tárolja
+
+    Változók:
+        installer_path: Tárolja a letöltési mappa útvonalát
+        programs_to_install[]: Lista, melyben a kiválasztott programok tárolódnak
+        installed programs[]: Lista, melyben a már telepített programokat tároljuk
+        Az osztály minden programhoz történő példányosítása (program_neve)
+
+functions.py:
+    Saját magam által megvalósított függvényeket tartalmaz
+
+    Függvények:
+        download_bttn_click: A "Download" gomb eseménykezelője, létrehozza a letöltési mappát (amennyiben még
+            nem létezik) majd meghívja a letöltő függvényt a kiválasztott programokra
+        install_bttn_click: Az "Install" gomb eseménykezelője, meghívja a telepítő függvényt a kiválasztott
+            programokra
+        auto_bttn_click: A "Download & Install" gomb eseménykezelője, meghívja a fentebbi két eseménykezelőt
+        download_app: Letölti a paraméterben megadott programot (amennyiben még nem létezik)
+        install_app: Feltelepíti a paraméterben kapott programot a számítógépre (amennyiben ez a munkamenet
+            még nem tette meg)
+
+box_handlers.py:
+    A checkbutton-ökhöz tartozó eseménykezelőket tartalmazza
+
+    Függvények:
+        checkbutton-ökhöz tartozó eseménykezelők "{checkbutton neve}_changed" formátumban: Hozáadja/törli a
+            kiválasztott programok listájából a hozzá tartozó programot

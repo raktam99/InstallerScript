@@ -1,10 +1,9 @@
 import tkinter as tk
-from tkinter import Checkbutton
+from tkinter import filedialog
 from PIL import Image, ImageTk
 import box_handlers as bh
 import functions as f
 import programs
-from tkinter import filedialog
 
 
 def change_path_bttn_click():
@@ -62,7 +61,7 @@ avast_image_label = tk.Label(root, image=avast_photo)
 avast_image_label.grid(row=2, column=0)
 
 # Checkbox
-avast_checkbox = Checkbutton(root, text="Avast")
+avast_checkbox = tk.Checkbutton(root, text="Avast")
 avast_checkbox.grid(row=2, column=1, sticky="w")
 avast_checkbox.bind('<Button-1>', lambda event: bh.avast_chckbx_changed())
 # endregion
@@ -79,7 +78,7 @@ chrome_image_label = tk.Label(root, image=chrome_photo)
 chrome_image_label.grid(row=4, column=0)
 
 # Checkbox
-chrome_checkbox = Checkbutton(root, text="Google Chrome")
+chrome_checkbox = tk.Checkbutton(root, text="Google Chrome")
 chrome_checkbox.grid(row=4, column=1, sticky="w")
 chrome_checkbox.bind('<Button-1>', lambda event: bh.chrome_chckbx_changed())
 # endregion
@@ -96,7 +95,7 @@ opera_image_label = tk.Label(root, image=opera_photo)
 opera_image_label.grid(row=4, column=2)
 
 # Checkbox
-opera_checkbox = Checkbutton(root, text="Opera")
+opera_checkbox = tk.Checkbutton(root, text="Opera")
 opera_checkbox.grid(row=4, column=3, sticky="w")
 opera_checkbox.bind('<Button-1>', lambda event: bh.opera_chckbx_changed())
 # endregion
@@ -113,7 +112,7 @@ iobitu_image_label = tk.Label(root, image=iobitu_photo)
 iobitu_image_label.grid(row=6, column=0)
 
 # Checkbox
-iobitu_checkbox = Checkbutton(root, text="Iobit Uninstaller")
+iobitu_checkbox = tk.Checkbutton(root, text="Iobit Uninstaller")
 iobitu_checkbox.grid(row=6, column=1, sticky="w")
 iobitu_checkbox.bind('<Button-1>', lambda event: bh.iobitu_chckbx_changed())
 # endregion
@@ -130,7 +129,7 @@ asystemcare_image_label = tk.Label(root, image=asystemcare_photo)
 asystemcare_image_label.grid(row=6, column=2)
 
 # Checkbox
-asystemcare_checkbox = Checkbutton(root, text="Advanced Systemcare")
+asystemcare_checkbox = tk.Checkbutton(root, text="Advanced Systemcare")
 asystemcare_checkbox.grid(row=6, column=3, sticky="w")
 asystemcare_checkbox.bind('<Button-1>', lambda event: bh.asystemcare_chckbx_changed())
 # endregion
@@ -146,7 +145,7 @@ teams_image_label = tk.Label(root, image=teams_photo)
 teams_image_label.grid(row=8, column=0)
 
 # Checkbox
-teams_checkbox = Checkbutton(root, text="Teams")
+teams_checkbox = tk.Checkbutton(root, text="Teams")
 teams_checkbox.grid(row=8, column=1, sticky="w")
 teams_checkbox.bind('<Button-1>', lambda event: bh.teams_chckbx_changed())
 # endregion
@@ -162,7 +161,7 @@ dc_image_label = tk.Label(root, image=dc_photo)
 dc_image_label.grid(row=8, column=2)
 
 # Checkbox
-dc_checkbox = Checkbutton(root, text="Discord")
+dc_checkbox = tk.Checkbutton(root, text="Discord")
 dc_checkbox.grid(row=8, column=3, sticky="w")
 dc_checkbox.bind('<Button-1>', lambda event: bh.dc_chckbx_changed())
 # endregion
@@ -178,7 +177,7 @@ python_image_label = tk.Label(root, image=python_photo)
 python_image_label.grid(row=10, column=0)
 
 # Checkbox
-python_checkbox = Checkbutton(root, text="Python")
+python_checkbox = tk.Checkbutton(root, text="Python")
 python_checkbox.grid(row=10, column=1, sticky="w")
 python_checkbox.bind('<Button-1>', lambda event: bh.python_chckbx_changed())
 # endregion
@@ -194,7 +193,7 @@ dotnet_image_label = tk.Label(root, image=dotnet_photo)
 dotnet_image_label.grid(row=10, column=2)
 
 # Checkbox
-dotnet_checkbox = Checkbutton(root, text=".Net")
+dotnet_checkbox = tk.Checkbutton(root, text=".Net")
 dotnet_checkbox.grid(row=10, column=3, sticky="w")
 dotnet_checkbox.bind('<Button-1>', lambda event: bh.dotnet_chckbx_changed())
 # endregion
@@ -210,7 +209,7 @@ java_image_label = tk.Label(root, image=java_photo)
 java_image_label.grid(row=11, column=0)
 
 # Checkbox
-java_checkbox = Checkbutton(root, text="Java")
+java_checkbox = tk.Checkbutton(root, text="Java")
 java_checkbox.grid(row=11, column=1, sticky="w")
 java_checkbox.bind('<Button-1>', lambda event: bh.java_chckbx_changed())
 # endregion
@@ -226,7 +225,7 @@ notepad_image_label = tk.Label(root, image=notepad_photo)
 notepad_image_label.grid(row=11, column=2)
 
 # Checkbox
-notepad_checkbox = Checkbutton(root, text="Notepad++")
+notepad_checkbox = tk.Checkbutton(root, text="Notepad++")
 notepad_checkbox.grid(row=11, column=3, sticky="w")
 notepad_checkbox.bind('<Button-1>', lambda event: bh.notepad_chckbx_changed())
 # endregion
@@ -242,7 +241,7 @@ vscode_image_label = tk.Label(root, image=vscode_photo)
 vscode_image_label.grid(row=12, column=0)
 
 # Checkbox
-vscode_checkbox = Checkbutton(root, text="VS Code")
+vscode_checkbox = tk.Checkbutton(root, text="VS Code")
 vscode_checkbox.grid(row=12, column=1, sticky="w")
 notepad_checkbox.bind('<Button-1>', lambda event: bh.vscode_chckbx_changed())
 # endregion
@@ -258,7 +257,7 @@ winrar_image_label = tk.Label(root, image=winrar_photo)
 winrar_image_label.grid(row=14, column=0)
 
 # Checkbox
-winrar_checkbox = Checkbutton(root, text="WinRar")
+winrar_checkbox = tk.Checkbutton(root, text="WinRar")
 winrar_checkbox.grid(row=14, column=1, sticky="w")
 winrar_checkbox.bind('<Button-1>', lambda event: bh.winrar_chckbx_changed())
 # endregion
@@ -274,7 +273,7 @@ daemon_image_label = tk.Label(root, image=daemon_photo)
 daemon_image_label.grid(row=14, column=2)
 
 # Checkbox
-daemon_checkbox = Checkbutton(root, text="Daemon ToolsXXXX")
+daemon_checkbox = tk.Checkbutton(root, text="Daemon ToolsXXXX")
 daemon_checkbox.grid(row=14, column=3, sticky="w")
 daemon_checkbox.bind('<Button-1>', lambda event: bh.daemon_chckbx_changed())
 # endregion
@@ -290,7 +289,7 @@ qbit_image_label = tk.Label(root, image=qbit_photo)
 qbit_image_label.grid(row=15, column=0)
 
 # Checkbox
-qbit_checkbox = Checkbutton(root, text="qBittorrtentXXXX")
+qbit_checkbox = tk.Checkbutton(root, text="qBittorrtentXXXX")
 qbit_checkbox.grid(row=15, column=1, sticky="w")
 qbit_checkbox.bind('<Button-1>', lambda event: bh.qbit_chckbx_changed())
 # endregion
@@ -306,7 +305,7 @@ steam_image_label = tk.Label(root, image=steam_photo)
 steam_image_label.grid(row=15, column=2)
 
 # Checkbox
-steam_checkbox = Checkbutton(root, text="Steam")
+steam_checkbox = tk.Checkbutton(root, text="Steam")
 steam_checkbox.grid(row=15, column=3, sticky="w")
 steam_checkbox.bind('<Button-1>', lambda event: bh.steam_chckbx_changed())
 # endregion
@@ -322,7 +321,7 @@ teamviewer_image_label = tk.Label(root, image=teamviewer_photo)
 teamviewer_image_label.grid(row=16, column=0)
 
 # Checkbox
-teamviewer_checkbox = Checkbutton(root, text="TeamViewer")
+teamviewer_checkbox = tk.Checkbutton(root, text="TeamViewer")
 teamviewer_checkbox.grid(row=16, column=1, sticky="w")
 teamviewer_checkbox.bind('<Button-1>', lambda event: bh.teamviewer_chckbx_changed())
 # endregion
