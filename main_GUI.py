@@ -46,7 +46,7 @@ developer_label.grid(row=9, column=0, columnspan=2, sticky="w", pady=(5, 0))
 other_label = tk.Label(root, text="Other:")
 other_label.grid(row=13, column=0, columnspan=2, sticky="w", pady=(5, 0))
 
-download_path_label = tk.Label(root, text="Folder, where installers will be downloadeda:")
+download_path_label = tk.Label(root, text="Folder, where installers will be downloaded:")
 download_path_label.grid(row=17, column=0, columnspan=3, sticky="w", pady=(20, 0))
 # endregion
 
