@@ -2,42 +2,42 @@ import programs
 
 
 def chrome_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.chrome):
+    if programs.chrome not in programs.programs_to_install:
         programs.programs_to_install.append(programs.chrome)
     else:
         programs.programs_to_install.remove(programs.chrome)
 
 
 def opera_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.opera):
+    if programs.opera not in programs.programs_to_install:
         programs.programs_to_install.append(programs.opera)
     else:
         programs.programs_to_install.remove(programs.opera)
 
 
 def iobitu_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.iobit_uninstaller):
+    if programs.iobit_uninstaller not in programs.programs_to_install:
         programs.programs_to_install.append(programs.iobit_uninstaller)
     else:
         programs.programs_to_install.remove(programs.iobit_uninstaller)
 
 
 def asystemcare_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.advanced_systemcare):
+    if programs.advanced_systemcare not in programs.programs_to_install:
         programs.programs_to_install.append(programs.advanced_systemcare)
     else:
         programs.programs_to_install.remove(programs.advanced_systemcare)
 
 
 def avast_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.avast):
+    if programs.avast not in programs.programs_to_install:
         programs.programs_to_install.append(programs.avast)
     else:
         programs.programs_to_install.remove(programs.avast)
 
 
 def winrar_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.winrar):
+    if programs.winrar not in programs.programs_to_install:
         programs.programs_to_install.append(programs.winrar)
     else:
         programs.programs_to_install.remove(programs.winrar)
@@ -45,7 +45,7 @@ def winrar_chckbx_changed():
 
 def daemon_chckbx_changed():
     print("Currently not working:(")
-    if not programs.programs_to_install.__contains__(programs.daemon_tools):
+    if programs.daemon_tools not in programs.programs_to_install:
         programs.programs_to_install.append(programs.daemon_tools)
     else:
         programs.programs_to_install.remove(programs.daemon_tools)
@@ -53,70 +53,70 @@ def daemon_chckbx_changed():
 
 def qbit_chckbx_changed():
     print("Currently not working:(")
-    if not programs.programs_to_install.__contains__(programs.qbittorrent):
+    if programs.qbittorrent not in programs.programs_to_install:
         programs.programs_to_install.append(programs.qbittorrent)
     else:
         programs.programs_to_install.remove(programs.qbittorrent)
 
 
 def java_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.java):
+    if programs.java not in programs.programs_to_install:
         programs.programs_to_install.append(programs.java)
     else:
         programs.programs_to_install.remove(programs.java)
 
 
 def teams_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.teams):
+    if programs.teams not in programs.programs_to_install:
         programs.programs_to_install.append(programs.teams)
     else:
         programs.programs_to_install.remove(programs.teams)
 
 
 def dc_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.discord):
+    if programs.discord not in programs.programs_to_install:
         programs.programs_to_install.append(programs.discord)
     else:
         programs.programs_to_install.remove(programs.discord)
 
 
 def steam_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.steam):
+    if programs.steam not in programs.programs_to_install:
         programs.programs_to_install.append(programs.steam)
     else:
         programs.programs_to_install.remove(programs.steam)
 
 
 def teamviewer_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.teamviewer):
+    if programs.teamviewer not in programs.programs_to_install:
         programs.programs_to_install.append(programs.teamviewer)
     else:
         programs.programs_to_install.remove(programs.teamviewer)
 
 
 def python_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.python):
+    if programs.python not in programs.programs_to_install:
         programs.programs_to_install.append(programs.python)
     else:
         programs.programs_to_install.remove(programs.python)
 
 
 def dotnet_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.dotnet):
+    if programs.dotnet not in programs.programs_to_install:
         programs.programs_to_install.append(programs.dotnet)
     else:
         programs.programs_to_install.remove(programs.dotnet)
 
 
 def notepad_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.notepad):
+    if programs.notepad not in programs.programs_to_install:
         programs.programs_to_install.append(programs.notepad)
     else:
         programs.programs_to_install.remove(programs.notepad)
 
 
 def vscode_chckbx_changed():
-    if not programs.programs_to_install.__contains__(programs.vscode):
+    if programs.vscode not in programs.programs_to_install:
         programs.programs_to_install.append(programs.vscode)
     else:
         programs.programs_to_install.remove(programs.vscode)
