@@ -4,7 +4,7 @@ import requests
 import subprocess
 
 
-# Install click handler function
+# Download click handler function
 def download_bttn_click():
     if not os.path.isdir(programs.installer_path):
         os.mkdir(programs.installer_path)
