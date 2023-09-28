@@ -334,7 +334,8 @@ download_txtbx_scrollbar.config(command=on_dowlnoad_txtbx_scrollbar_move)
 
 download_txtbx_text = tk.StringVar()
 download_txtbx_text.set(programs.installer_path)
-download_txtbx = tk.Entry(root, textvariable=download_txtbx_text, state="readonly", xscrollcommand=download_txtbx_scrollbar.set)
+download_txtbx = tk.Entry(root, textvariable=download_txtbx_text,
+                          state="readonly", xscrollcommand=download_txtbx_scrollbar.set)
 download_txtbx.grid(row=18, column=0, columnspan=4, sticky="ew")
 # endregion
 
