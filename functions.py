@@ -73,7 +73,7 @@ def install_app(application):
     print(f"{application.name}...")
     path = f"{programs.installer_path}\\{application.name} Setup.exe"
     cmd = [path] + application.flags
-    if not programs.installed_programs.__contains__(application):
+    if application not in programs.installed_programs:
         try:
             p = subprocess.Popen(cmd)
             p.wait()
