@@ -3,6 +3,7 @@ import os
 installer_path = f"{os.path.expanduser('~')}\\Downloads\\Downloaded Installers"
 programs_to_install = []
 installed_programs = []
+all_programs = []
 
 
 # Class for apps
@@ -11,9 +12,16 @@ class App:
         self.name = name
         self.url = url
         self.flags = flags
+        all_programs.append(self)
 
 
-chrome = App("Chrome",
+def get_by_name(name):
+    for app in all_programs:
+        if app.name == name:
+            return app
+
+
+chrome = App("Google Chrome",
              "https://dl.google.com/"
              "tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B618ACBDD-3ECC-E2AE-B51C-"
              "62A89ADF533C%7D%26lang%3Dhu%26browser%3D4%26usagestats%3D1%26appname%3DGoogle%2520Chrome"

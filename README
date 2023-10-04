@@ -44,11 +44,19 @@ programs.py:
         programs_to_install[]: Lista, melyben a kiválasztott programok tárolódnak
         installed programs[]: Lista, melyben a már telepített programokat tároljuk
         Az osztály minden programhoz történő példányosítása (program_neve)
+        all_programs[]: Lista, melyben tároljuk az összes App példányt
+
+    Függvények:
+        get_by_name: paraméterül kap egy string-et, majd visszaadja azt az app példányt, ahol a név
+            egyezik a paraméterrel
 
 functions.py:
     Saját magam által megvalósított függvényeket tartalmaz
 
     Függvények:
+        chckbx_changed: A checkbutton-ök kezelésére szolgál, paraméterként kap egy programnevet,
+            majd az ahhoz tartozó programpéldány hozzáadja, vagy eltávolítja a telepítendő
+            programok közül
         download_bttn_click: A "Download" gomb eseménykezelője, létrehozza a letöltési mappát (amennyiben még
             nem létezik) majd meghívja a letöltő függvényt a kiválasztott programokra
         install_bttn_click: Az "Install" gomb eseménykezelője, meghívja a telepítő függvényt a kiválasztott
@@ -57,10 +65,3 @@ functions.py:
         download_app: Letölti a paraméterben megadott programot (amennyiben még nem létezik)
         install_app: Feltelepíti a paraméterben kapott programot a számítógépre (amennyiben ez a munkamenet
             még nem tette meg)
-
-box_handlers.py:
-    A checkbutton-ökhöz tartozó eseménykezelőket tartalmazza
-
-    Függvények:
-        checkbutton-ökhöz tartozó eseménykezelők "{checkbutton neve}_changed" formátumban: Hozáadja/törli a
-            kiválasztott programok listájából a hozzá tartozó programot

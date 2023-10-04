@@ -4,6 +4,14 @@ import requests
 import subprocess
 
 
+def chckbx_changed(name):
+    program = programs.get_by_name(name)
+    if program not in programs.programs_to_install:
+        programs.programs_to_install.append(program)
+    else:
+        programs.programs_to_install.remove(program)
+
+
 # Download click handler function
 def download_bttn_click():
     if not os.path.isdir(programs.installer_path):
