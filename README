@@ -1,4 +1,5 @@
 Ez az alkalmazás programok automatikus letöltését és telepítését végzi.
+Ahhoz, hogy a program megfelelően működjön, a PyCharmot rendszergazdaként kell elindítani.
 
 main_GUI.py:
     Itt található a program belépési pontja, illetve ez a modul felelős a GUI-ért
